@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequestMapping(value = "user")
@@ -21,6 +23,12 @@ public class UserController {
     public UserController(UserService service, UserMapper mapper) {
         this.service = service;
         this.mapper = mapper;
+    }
+
+    @Operation(description = "Получить список всех записей", method = "GetAll")
+    @GetMapping("/list")
+    public ResponseEntity<List<UserDto>> getAll() {
+        return ResponseEntity.ok().body(service.listAll().stream().map(mapper::toDto).toList());
     }
 
     @Operation(description = "Получить запись по id", method = "GetOne")
