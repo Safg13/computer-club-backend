@@ -1,88 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/choices.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
-  <title>Document</title>
+  <title>Основная страница</title>
 </head>
 
-<body class="body">
-  <div class="conteiner">
-    <form action="http://localhost:5432/user" method="post" class="form" novalidate>
-      <div class="form_logo_block">
-        <div class="form_logo">
-          <div class="form_logo_element">
-            <img src="/img/pngegg.png" alt="" width="60" height="30">
-          </div>
-          <div class="form_logo_element">
-            <img src="/img/pngegg.png" alt="" width="60" height="30">
-          </div>
-        </div>
-      </div>
-      <h2 class="reg loader">
-        <span class="m">Р</span>
-        <span class="m">е</span>
-        <span class="m">г</span>
-        <span class="m">и</span>
-        <span class="m">с</span>
-        <span class="m">т</span>
-        <span class="m">р</span>
-        <span class="m">а</span>
-        <span class="m">ц</span>
-        <span class="m">и</span>
-        <span class="m">я</span>
-      </h2>
+<body class="body mainPage_body">
+  <header class="header">
+    <div class="conteiner header_conteiner">
+      <p class="header_mem_text">База данных копрофилов</p>
+    </div>
 
-      <div class="input_box">
-        <input type="text" name="id" hidden/>
-        <input type="text" id="username" name="name" class="form_place empty-check" required>
-        <label for="" class="div_label">Имя</label>
-        <span class="name_error" aria-live="polite">Это поле не должно быть пустым</span>
-      </div>
+  </header>
+  <main class="main">
+    <div class="conteiner mainPage_conteiner">
+      <ul class="mainPage_buttons_list flex">
+        <li class="mainPage_buttons_item flex"><a href="/registration.html" class="mainPage_link flex"><span>Регистрация</span></a></li>
+        <li class="mainPage_buttons_item flex"><a href="#" class="mainPage_link flex"><span>Просмотр пользователей</span></a></li>
+        <li class="mainPage_buttons_item flex"><a href="#" class="mainPage_link flex"><span>О нас</span></a></li>
 
-      <div class="input_box">
-        <input type="text" id="reg_email" name="email" class="form_place empty-check" required>
-        <label for="" class="div_label">Электронная почта</label>
-        <span class="email_error" aria-live="polite">Неверный адрес почты</span>
-      </div>
+      </ul>
+    </div>
+  </main>
+<footer class="footer">
 
-      <div class="input_box">
-        <input type="tel" id="reg_tel" name="phone" class="form_place empty-check" required>
-        <label for="" class="div_label">Телефон</label>
-        <span class="tel_error" aria-live="polite">Неверный номер телефона</span>
-      </div>
-
-      <div class="input_box">
-        <input type="password" id="reg_password" name="password" class="form_place empty-check" required>
-        <label for="" class="div_label">Пароль</label>
-        <span class="password_error" aria-live="polite">Неверный пароль</span>
-      </div>
-      
-      <div class="input_box">
-        <input type="password" id="reg_password_confirmation" class="form_place empty-check" required>
-        <label for="" class="div_label">Подтвердите пароль</label>
-        <span class="password_confirmation_error" aria-live="polite">Неверное подтверждение пароля</span>
-      </div>
-
-      <div class="form_bottom">
-        <button type="submit" class="form_btn">Отправить</button>
-      </div>
-      <div class="area">
-        <label for="check" class="checkbox_label">
-          <input type="checkbox" id="check" required>
-          Я принимаю согласие на обработку данных
-          <span></span>
-        </label>
-      </div>
-    </form>
-
-  </div>
+</footer>
 </body>
 
 </html>
