@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/registrationform/src/main/resources/public/css/normalize.css">
   <link rel="stylesheet" href="/registrationform/src/main/resources/public/css/style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
-  <title>Document</title>
+  <title>Форма регистрации</title>
 </head>
 
 <body class="body">
@@ -37,9 +37,9 @@
         <span class="m">и</span>
         <span class="m">я</span>
       </h2>
-
+      <input type="text" name="id" hidden />
       <div class="input_box">
-        <input type="text" name="id" hidden/>
+
         <input type="text" id="username" name="name" class="form_place empty-check" required>
         <label for="" class="div_label">Имя</label>
         <span class="name_error" aria-live="polite">Это поле не должно быть пустым</span>
@@ -62,7 +62,7 @@
         <label for="" class="div_label">Пароль</label>
         <span class="password_error" aria-live="polite">Неверный пароль</span>
       </div>
-      
+
       <div class="input_box">
         <input type="password" id="reg_password_confirmation" class="form_place empty-check" required>
         <label for="" class="div_label">Подтвердите пароль</label>
@@ -80,7 +80,7 @@
         </label>
       </div>
     </form>
-<script src="/registrationform/src/main/resources/public/script.js"></script>
+    <script src="/registrationform/src/main/resources/public/script.js"></script>
   </div>
 </body>
 
