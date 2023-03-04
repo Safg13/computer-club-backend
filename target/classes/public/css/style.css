@@ -1,5 +1,6 @@
 html {
 	box-sizing: border-box;
+	font-family: 'Roboto', 'font', sans-serif;
 	height: 100%;
 }
 
@@ -48,6 +49,39 @@ p {
 	display: flex;
 }
 
+.back_btn {
+	position: absolute;
+}
+
+.back_btn_link {
+	position: absolute;
+	top: 20px;
+	left: 0;
+	font-family: 'Roboto', 'font', sans-serif;
+	padding: 50px 50px 50px 20px;
+	background-color: transparent;
+	background-color: rgb(0, 0, 0, 0.1);
+	border-top-right-radius: 30px;
+	border-bottom-right-radius: 30px;
+	outline: transparent 1px solid;
+	color: #fff;
+	transition: all 0.3s ease-in-out;
+}
+
+.back_btn_link:focus {
+	outline: #03e9f4 1px solid;
+}
+
+.back_btn_link:hover {
+	background-color: rgb(0, 0, 0, 0.3);
+	color: #03e9f4;
+}
+
+.back_btn_link:active {
+	background-color: rgb(0, 0, 0, 0.5);
+	outline: transparent 1px solid;
+}
+
 .checkbox_label {
 	position: relative;
 	display: inline-block;
@@ -70,6 +104,7 @@ label:active {
 }
 
 .body {
+	position: relative;
 	height: 100%;
 	margin: 0;
 	padding: 0;
@@ -124,13 +159,14 @@ label:active {
 	padding: 70px 50px;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	font-weight: 600;
+	font-weight: 500;
 	line-height: 30px;
 	background-color: aliceblue;
 	background: rgba(0, 0, 0, .5);
 	border-radius: 10px;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7);
 	color: #fff;
+	font-family: 'Roboto', 'font', sans-serif;
 	transform: translate(0, 4%);
 }
 
@@ -140,6 +176,7 @@ label:active {
 	color: #fff;
 	text-align: center;
 	font-size: 35px;
+	font-family: 'Roboto', 'font', sans-serif;
 }
 
 .input_box {
@@ -451,9 +488,8 @@ label:active {
 	background-color: #03e9f4;
 	color: #fff;
 	box-shadow: 0 0 5px #03e9f4,
-		0 0 25px #03e9f4,
-		0 0 50px #03e9f4,
-		0 0 100px #03e9f4;
+		0 0 50px #03e9f4;
+
 }
 
 .mainPage_link:active {
@@ -467,4 +503,20 @@ label:active {
 	font-size: 25px;
 	font-weight: 600;
 	color: #03e9f4;
+}
+
+/* users */
+
+.users_conteiner {
+	display: block;
+	margin: 0 auto;
+	padding-top: 50px;
+	max-width: 1000px;
+	min-width: 290px;
+	height: 100%;
+	font-weight: 600;
+	line-height: 30px;
+	background: rgba(0, 0, 0, .5);
+	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7);
+	color: #fff;
 }
