@@ -2,60 +2,35 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
-    <title>Пользователи</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto">
+  <title>Пользователи</title>
 </head>
 
 <body class="body users_body">
-    <div class="back_btn">
-        <a href="index.html" class="back_btn_link">Назад</a>
-      </div>
-    <header class="header"></header>
-    <main class="main">
-        <div class="conteiner users_conteiner">
-            <table id="table">
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Password</th>
-                </tr>
-            </table>
+  <div class="back_btn">
+    <a href="index.html" class="back_btn_link">Назад</a>
+  </div>
+  <header class="header"></header>
+  <main class="main">
+    <div class="conteiner users_conteiner">
+      <table id="table">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Password</th>
+        </tr>
+      </table>
 
-        </div>
-    </main>
-    <script>
-// Get JSON data from the given URL
-fetch('http://localhost:5432/user/list')
-  .then(response => response.json())
-  .then(data => {
-    // Create an empty string to hold the HTML output
-    let output = '';
-
-    // Loop through the JSON objects
-    data.forEach(function(object) {
-      // Append each object as a row to the output
-      output += `<tr>
-                  <td>${object.id}</td>
-                  <td>${object.name}</td>
-                  <td>${object.email}</td>
-                  <td>${object.phone}</td>
-                  <td>${object.password}</td>
-                </tr>`;
-    });
-
-    // Add the output to the HTML table
-    document.getElementById('table').innerHTML = output;
-  });
-</script>
-
-
+    </div>
+  </main>
+  <script src="users.js"></script>
 </body>
 
 </html>
