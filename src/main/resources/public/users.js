@@ -1,21 +1,30 @@
-fetch('http://localhost:5432/user/list')
-  .then(response => response.json())
-  .then(data => {
-    // Create an empty string to hold the HTML output
-    let output = '';
+let sample = '';
 
-    // Loop through the JSON objects
-    data.forEach(function(object) {
-      // Append each object as a row to the output
-      output += `<tr>
-                  <td>${object.id}</td>
-                  <td>${object.name}</td>
-                  <td>${object.email}</td>
-                  <td>${object.phone}</td>
-                  <td>${object.password}</td>
-                </tr>`;
+// sample +=     <div class="conteiner users_conteiner">
+// <p>qeporqp;elr</p>
+// <button>Нажать отправить</button>
+// </div>
+
+let testParagraph = document.querySelector('.xui');
+
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+    .then(response => response.json())
+    .then(data => {
+        if (Array.isArray(data)) {
+            data.forEach(json => {
+                // const div = document.createElement('div');
+                // div.innerHTML = JSON.stringify(json);
+                testParagraph.innerHTML = JSON.stringify(json);
+                // document.querySelector('.users_conteiner').appendChild(div);
+            });
+        } else {
+                 // const div = document.createElement('div');
+                // div.innerHTML = JSON.stringify(json);
+                testParagraph.innerHTML = JSON.stringify(json);
+                // document.querySelector('.users_conteiner').appendChild(div);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
 
-    // Add the output to the HTML table
-    document.getElementById('table').innerHTML = output;
-  });
