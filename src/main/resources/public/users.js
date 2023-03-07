@@ -1,30 +1,56 @@
-let sample = '';
+// let userJSONData = JSON.stringify(data);
+// let userData = JSON.parse(userJSONData)
+//  console.log(userData.userId);
 
-// sample +=     <div class="conteiner users_conteiner">
-// <p>qeporqp;elr</p>
-// <button>Нажать отправить</button>
-// </div>
 
-let testParagraph = document.querySelector('.xui');
-
-fetch('https://jsonplaceholder.typicode.com/posts/1')
+fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(data => {
         if (Array.isArray(data)) {
-            data.forEach(json => {
-                // const div = document.createElement('div');
-                // div.innerHTML = JSON.stringify(json);
-                testParagraph.innerHTML = JSON.stringify(json);
-                // document.querySelector('.users_conteiner').appendChild(div);
+            data.forEach(data => {
+                let userJSONData = JSON.stringify(data);
+                let userData = JSON.parse(userJSONData)
+
+                const userItem = document.createElement('div');
+                userItem.classList = "user_item flex";
+
+                const userItemText = document.createElement('p');
+                userItemText.classList.add('user_item_paragraph');
+
+                document.querySelector('.users_conteiner').appendChild(userItem);
+                userItem.appendChild(userItemText);
+                userItemText.innerHTML = (
+                    "userId: " + userData.userId + '\n' +
+                    "id: " + userData.id + "<br>" +
+                    "title: " + userData.title + "<br>" +
+                    "body: " + userData.body
+                );
+
+                const userItemRight = document.createElement('div');
+                userItemRight.className = "user_item_buttons flex";
+                userItem.appendChild(userItemRight);
+
+                const userItemUpdateBtn = document.createElement('button');
+                userItemUpdateBtn.classList.add('user_item_btn');
+                userItemUpdateBtn.textContent = "Редактировать";
+                userItemRight.appendChild(userItemUpdateBtn);
+
+                const userItemDeleteBtn = document.createElement('button');
+                userItemDeleteBtn.className = "user_item_btn user_item_delete_btn";
+                userItemDeleteBtn.textContent = "Удалить";
+                userItemRight.appendChild(userItemDeleteBtn);
             });
         } else {
-                 // const div = document.createElement('div');
-                // div.innerHTML = JSON.stringify(json);
-                testParagraph.innerHTML = JSON.stringify(json);
-                // document.querySelector('.users_conteiner').appendChild(div);
+            let userJSONData = JSON.stringify(data);
+            let userData = JSON.parse(userJSONData)
+
+            const userItem = document.createElement('div');
+            userItem.classList.add('user_item')
+            userItem.innerHTML = JSON.stringify(data);
+            document.querySelector('.users_conteiner').appendChild(userItem);
         }
     })
     .catch(error => {
-        console.error('Error:', error);
+        console.error('хуйня какая-то:', error);
     });
 
