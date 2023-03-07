@@ -20,7 +20,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
                 document.querySelector('.users_conteiner').appendChild(userItem);
                 userItem.appendChild(userItemText);
                 userItemText.innerHTML = (
-                    "userId: " + userData.userId + '\n' +
+                    "userId: " + userData.userId + "<br>" +
                     "id: " + userData.id + "<br>" +
                     "title: " + userData.title + "<br>" +
                     "body: " + userData.body
