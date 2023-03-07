@@ -551,12 +551,12 @@ label:active {
 }
 
 .user_item_paragraph {
-	margin-right: 30px;
+	margin-right: 40px;
 }
 
 .user_item_buttons {
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 }
 
 .user_item_btn {
