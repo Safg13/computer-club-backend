@@ -1,6 +1,10 @@
 const url = 'https://jsonplaceholder.typicode.com/posts';
 const deleteUserUrl = 'https://jsonplaceholder.typicode.com'
 
+
+
+
+
 fetch(url)
     .then(response => response.json())
     .then(data => {
@@ -87,10 +91,7 @@ let user = {
 };
 
 
-function getUserId(){
-    let gettedId = document.querySelector('.item_info_id');
-    return gettedId
-}
+console.log(userItem.dataset)
 
 
 
