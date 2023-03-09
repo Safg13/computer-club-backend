@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  deploy:
+    depends_on:
+      - postgres
+    container_name: deployRegistrationForm
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-tPZw:5432/registrationform
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgrespw
+  postgres:
+    container_name: postgres-tPZw
+    image: postgres
+    environment:
+      POSTGRES_DB: "registrationform"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgrespw"
+    ports:
+      - "5432:5432"

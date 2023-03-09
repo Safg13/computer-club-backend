@@ -1,1 +1,11 @@
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/repository/UserRepository.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/service/UserService.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/config/OpenApiConfig.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/dto/UserDto.java
 /home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/RegistrationformApplication.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/mapper/Mapper.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/model/User.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/controller/UserController.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/config/ModelMapperConfig.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/mapper/UserMapper.java
+/home/emays/IdeaProjects/registrationform/src/main/java/com/javalearning/registrationform/mapper/GenericMapper.java
