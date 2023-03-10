@@ -550,7 +550,7 @@ filter: brightness(70%);
 }
 
 .user_item:last-child {
-	margin-bottom: 0;
+	margin-bottom: 50px;
 }
 
 .user_item_test {
