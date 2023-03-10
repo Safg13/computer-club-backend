@@ -45,6 +45,7 @@ form.addEventListener('submit', function (submit_valid) {
         return false;
     } else {
         this.submit()
+        window.location.href = 'http://safg13.ddns.net:8080/index.html';
     }
 })
 
