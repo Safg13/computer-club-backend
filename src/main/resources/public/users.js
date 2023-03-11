@@ -1,7 +1,8 @@
 const url = 'https://jsonplaceholder.typicode.com/posts'; //testURL
-const GETusersUrl = 'http://safg13.ddns.net:8080/user/list'
-const DELETEUserUrl = 'http://safg13.ddns.net:8080/user/'
-const PUTUserUrl = 'http://safg13.ddns.net:8080/user/'
+const GETusersUrl = 'http://safg13.ddns.net:8080/user/list';
+const DELETEUserUrl = 'http://safg13.ddns.net:8080/user/';
+const PUTUserUrl = 'http://safg13.ddns.net:8080/user/';
+const POSTUserUrl = 'http://safg13.ddns.net:8080/user/add'
 
 fetch(GETusersUrl)
     .then(response => response.json())
