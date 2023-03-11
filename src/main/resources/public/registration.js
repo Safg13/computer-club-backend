@@ -44,8 +44,8 @@ form.addEventListener('submit', function (submit_valid) {
         username.classList.add('form_place--invalid');
         return false;
     } else {
-        this.submit()
         window.location.href = 'http://safg13.ddns.net:8080/index.html';
+        this.submit();
     }
 })
 

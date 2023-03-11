@@ -53,7 +53,7 @@ fetch(GETusersUrl)
 
                 const userItemUpdateBtn = document.createElement('button');
                 userItemUpdateBtn.classList.add('user_item_btn');
-                userItemUpdateBtn.textContent = "Отправить в консоль";
+                userItemUpdateBtn.textContent = "Редактировать";
                 userItemRight.appendChild(userItemUpdateBtn);
                 userItemUpdateBtn.addEventListener('click', function () {
 
@@ -174,10 +174,12 @@ fetch(GETusersUrl)
                             password: inputPassword.value
                         }
 
+                        console.log(JSON.stringify(user))
+
                         fetch(PUTUserUrl + userData.id), {
                             method: 'PUT',
                             headers: {
-                                'Content-Type': 'application/json;charset=utf-8'
+                                'Content-Type': 'application/json'
                               },
                               body: JSON.stringify(user)
                         }
