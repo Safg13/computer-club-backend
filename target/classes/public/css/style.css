@@ -44,6 +44,23 @@ p {
 	margin: 0;
 	padding: 0;
 }
+/* COLORS */
+:root {
+	--main-color: #243b55;
+	--cyan-color: #03e9f4;
+	--delete-red-color: #ff2e2e;
+	--translucent-border: 1px solid rgba(0,0,0,0.3);
+
+}
+
+/* COLORS */
+
+mark {
+	background-color: rgba(0, 0, 0, .3);
+	padding: 2.5px 0 4px 2px;
+	color: var(--cyan-color);
+	font-size: 16px;
+}
 
 .flex {
 	display: flex;
@@ -69,12 +86,12 @@ p {
 }
 
 .back_btn_link:focus {
-	outline: #03e9f4 1px solid;
+	outline: var(--cyan-color) 1px solid;
 }
 
 .back_btn_link:hover {
 	background-color: rgb(0, 0, 0, 0.3);
-	color: #03e9f4;
+	color: var(--cyan-color);
 }
 
 .back_btn_link:active {
@@ -94,7 +111,7 @@ p {
 }
 
 label:hover {
-	color: #03e9f4;
+	color: var(--cyan-color);
 	transform: scale(105%);
 }
 
@@ -105,12 +122,10 @@ label:active {
 
 .body {
 	position: relative;
-	height: 100%;
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	/* background: linear-gradient(#141e30, #243b55) no-repeat; */
-	background-color: #243b55;
+	background-color: var(--main-color);
 }
 
 
@@ -246,12 +261,12 @@ label:active {
 .input_box input:valid~label {
 	top: -35px;
 	left: 0;
-	color: #03e9f4;
+	color: var(--cyan-color);
 	font-size: 12px;
 }
 
 .form_place:focus {
-	outline: 1px solid #03e9f4;
+	outline: 1px solid var(--cyan-color);
 	outline-offset: 3px;
 	border-radius: 3px
 }
@@ -270,29 +285,28 @@ label:active {
 	font-weight: 600;
 	margin-bottom: 20px;
 	background-color: transparent;
-	border: 2px solid #03e9f4;
+	border: 2px solid var(--cyan-color);
 	border-radius: 10px;
-	color: #03e9f4;
+	color: var(--cyan-color);
 	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .form_btn:focus {
-	outline: 1px solid #03e9f4;
+	outline: 1px solid var(--cyan-color);
 	outline-offset: 2px;
 }
 
 .form_btn:hover {
-	background-color: #03e9f4;
+	background-color: var(--cyan-color);
 	color: #fff;
-	box-shadow: 0 0 5px #03e9f4,
-		0 0 25px #03e9f4,
-		0 0 50px #03e9f4,
-		0 0 100px #03e9f4;
+	box-shadow: 0 0 5px var(--cyan-color),
+		0 0 25px var(--cyan-color),
+		0 0 50px var(--cyan-color),
+		0 0 100px var(--cyan-color);
 }
 
 .form_btn:active {
-	background-color: #017980;
-	border-color: #017980;
+filter: brightness(70%);
 	transform: scale(90%);
 }
 
@@ -368,8 +382,8 @@ label:active {
 
 @keyframes loading {
 	to {
-		text-shadow: 0 0 40px #03e9f4;
-		color: #03e9f4;
+		text-shadow: 0 0 40px var(--cyan-color);
+		color: var(--cyan-color);
 	}
 }
 
@@ -419,7 +433,7 @@ label:active {
 
 } */
 
-.mainPage_conteiner {
+.mainPage_container {
 	display: block;
 	margin: 0 auto;
 	padding-top: 50px;
@@ -468,9 +482,9 @@ label:active {
 	font-weight: 600;
 	margin-bottom: 30px;
 	background-color: transparent;
-	border: 2px solid #03e9f4;
+	border: 2px solid var(--cyan-color);
 	border-radius: 10px;
-	color: #03e9f4;
+	color: var(--cyan-color);
 	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -480,21 +494,20 @@ label:active {
 }
 
 .mainPage_link:focus {
-	outline: 1px solid #03e9f4;
+	outline: 1px solid var(--cyan-color);
 	outline-offset: 2px;
 }
 
 .mainPage_link:hover {
-	background-color: #03e9f4;
+	background-color: var(--cyan-color);
 	color: #fff;
-	box-shadow: 0 0 5px #03e9f4,
-		0 0 50px #03e9f4;
+	box-shadow: 0 0 5px var(--cyan-color),
+		0 0 50px var(--cyan-color);
 
 }
 
 .mainPage_link:active {
-	background-color: #017980;
-	border-color: #017980;
+filter: brightness(70%);
 	transform: scale(90%);
 }
 
@@ -502,21 +515,134 @@ label:active {
 	margin: auto;
 	font-size: 25px;
 	font-weight: 600;
-	color: #03e9f4;
+	color: var(--cyan-color);
 }
 
 /* users */
 
 .users_conteiner {
-	display: block;
+	display: flex;
+	flex-direction: column;
 	margin: 0 auto;
 	padding-top: 50px;
 	max-width: 1000px;
 	min-width: 290px;
-	height: 100%;
+	min-height: 100%;
 	font-weight: 600;
 	line-height: 30px;
 	background: rgba(0, 0, 0, .5);
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7);
 	color: #fff;
+	font-family: 'Roboto', 'font', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.user_item {
+	justify-content: space-between;
+	margin: 0 30px 30px 30px;
+	padding: 20px 40px;
+	background-color: var(--main-color);
+	border: #000000 0px solid;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px #000;
+}
+
+.user_item:last-child {
+	margin-bottom: 50px;
+}
+
+.user_item_test {
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 30px 30px 30px;
+	padding: 20px 40px;
+	background-color: var(--main-color);
+	border: #000000 0px solid;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px #000;
+}
+
+.user_item_info {
+	flex-direction: column;
+	justify-content: flex-start;
+	flex-grow: 1;
+	max-width: 100%;
+	margin-right: 40px;
+	height: auto;
+}
+
+.user_item_info > div {
+	padding: 0 10px;
+	border-top: var(--translucent-border);
+}
+
+.user_item_info > div:last-child {
+	border-bottom: var(--translucent-border);
+}
+
+
+.user_item_paragraph {
+	margin-right: 40px;
+}
+
+.user_item_buttons {
+	flex-direction: column;
+	justify-content: flex-start;
+	border-left: var(--translucent-border);
+	padding-left: 10px;
+}
+
+.user_item_btn {
+	margin-bottom: 10px;
+	padding: 10px 30px;
+	width: 200px;
+	height: 50px;
+	font-size: 12px;
+	background-color: transparent;
+	border: 2px solid var(--cyan-color);
+	border-radius: 10px;
+	color: var(--cyan-color);
+	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.user_item_btn:focus {
+	outline: 1px solid var(--cyan-color);
+	outline-offset: 2px;
+}
+
+.user_item_btn:hover {
+	background-color: var(--cyan-color);
+	color: #fff;
+	box-shadow: 0 0 5px var(--cyan-color),
+		0 0 50px var(--cyan-color);
+
+}
+
+.user_item_btn:active {
+filter: brightness(70%);
+	transform: scale(90%);
+	outline: 0px solid var(--cyan-color);
+	outline-offset: 0px;
+}
+
+.user_item_delete_btn {
+	margin-bottom: 0;
+}
+
+.user_item_delete_btn:hover {
+	background-color: var(--delete-red-color);
+	color: #fff;
+	border: 2px solid var(--delete-red-color);
+	box-shadow: 0 0 5px var(--delete-red-color),
+		0 0 50px var(--delete-red-color);
+	
+}
+
+.user_item_delete_btn:active {
+	filter: brightness(70%);
+	transform: scale(90%);
+	outline: 0px solid var(--cyan-color);
+	outline-offset: 0px;
 }
