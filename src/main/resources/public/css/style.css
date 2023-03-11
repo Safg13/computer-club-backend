@@ -145,8 +145,13 @@ label:active {
 	left: 0;
 	width: 20px;
 	height: 20px;
-	border: 1px solid #000;
+	border: 1px solid rgb(255, 255, 255);
 	text-align: center;
+	
+}
+
+#check+span:hover {
+	border-color: var(--cyan-color);
 }
 
 #check+span:before {
@@ -642,6 +647,91 @@ filter: brightness(70%);
 
 .user_item_delete_btn:active {
 	filter: brightness(70%);
+	transform: scale(90%);
+	outline: 0px solid var(--cyan-color);
+	outline-offset: 0px;
+}
+
+.editor_window {
+	--height: 500px;
+	--width: 400px;
+
+	position: fixed;
+	flex-direction: column;
+	padding: 30px;
+	top: calc(50% - (var(--height)/2));
+	left: calc(50% - (var(--width)/2));
+	min-height: var(--height);
+	min-width: var(--width);
+	background-color: var(--main-color);
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px #000;
+	color: #fff;
+	font-family: 'Roboto', 'font', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.editor_window_title {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.editor_window_label {
+	font-size: 16px;
+	color: var(--cyan-color);
+}
+
+.editor_window_place {
+	margin-bottom: 15px;
+}
+
+.editor_window_place--non-active {
+	margin-bottom: 15px;
+	background-color: rgba(0, 0, 0, .3);
+	border: none;
+}
+
+.editor_window_place--non-active:focus {
+	outline: none;
+}
+
+.editor_window_place_div {
+	margin-bottom: 40px;
+}
+
+.editor_window_submit {
+	margin: 0 auto;
+	margin-bottom: 10px;
+	padding: 10px 30px;
+	width: 200px;
+	height: 50px;
+	font-size: 12px;
+	background-color: transparent;
+	border: 2px solid var(--cyan-color);
+	border-radius: 10px;
+	color: var(--cyan-color);
+	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editor_window_submit:focus {
+	outline: 1px solid var(--cyan-color);
+	outline-offset: 2px;
+}
+
+.editor_window_submit:hover {
+	background-color: var(--cyan-color);
+	color: #fff;
+	box-shadow: 0 0 5px var(--cyan-color),
+		0 0 50px var(--cyan-color);
+
+}
+
+.editor_window_submit:active {
+filter: brightness(70%);
 	transform: scale(90%);
 	outline: 0px solid var(--cyan-color);
 	outline-offset: 0px;
