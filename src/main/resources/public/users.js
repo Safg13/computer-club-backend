@@ -175,14 +175,19 @@ fetch(GETusersUrl)
                         }
 
                         console.log(JSON.stringify(user))
-
-                        fetch(PUTUserUrl + userData.id), {
+                        const requestOptions = {
                             method: 'PUT',
-                            headers: {
-                                'Content-Type': 'application/json'
-                              },
-                              body: JSON.stringify(user)
-                        }
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify(user)
+                        } 
+
+                        fetch(PUTUserUrl + userData.id, requestOptions)
+                        // .then(response => response.json())
+                        // .catch(error => {
+                        //     console.error('хуйня какая-то:', error);
+                        //     console.log(response.status);
+                        // });
+                        
 
                         console.log(user);
                         document.querySelector('.users_body').removeChild(editorWindow);
