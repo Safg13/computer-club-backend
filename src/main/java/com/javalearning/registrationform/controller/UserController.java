@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @Operation(description = "Создать запись", method = "Create")
-    @PostMapping("/")
+    @PostMapping("/add")
     public ResponseEntity<UserDto> create(UserDto object) { //RequestBody UserDto object изменил чтобы жрало x-www-form urlencoded
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.create(mapper.toEntity(object))));
     }
