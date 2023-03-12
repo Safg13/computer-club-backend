@@ -217,7 +217,7 @@ submitButton.addEventListener('click', function () {
         passwordConfirmationValidate() == true) {
 
         newUser = {
-            id: null,
+            id: '1',
             name: username.value,
             email: regEmail.value,
             phone: regTel.value,
@@ -229,6 +229,7 @@ submitButton.addEventListener('click', function () {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
         }
+        console.log(JSON.stringify(newUser))
 
         fetch(POSTUserUrl, requestOptions);
 
