@@ -1,8 +1,4 @@
 const url = 'https://jsonplaceholder.typicode.com/posts'; //testURL
-const GETusersUrl = 'http://safg13.ddns.net:8080/user/list';
-const DELETEUserUrl = 'http://safg13.ddns.net:8080/user/';
-const PUTUserUrl = 'http://safg13.ddns.net:8080/user/';
-const POSTUserUrl = 'http://safg13.ddns.net:8080/user/add'
 
 fetch(GETusersUrl)
     .then(response => response.json())
@@ -165,7 +161,7 @@ fetch(GETusersUrl)
                     editorWindowSubmitButton.innerHTML = "Подтвердить";
                     editorWindow.appendChild(editorWindowSubmitButton);
 
-                    editorWindowSubmitButton.addEventListener('click', function() {
+                    editorWindowSubmitButton.addEventListener('click', function () {
                         user = {
                             id: userData.id,
                             name: inputName.value,
@@ -177,17 +173,11 @@ fetch(GETusersUrl)
                         console.log(JSON.stringify(user))
                         const requestOptions = {
                             method: 'PUT',
-                            headers: {'Content-Type': 'application/json'},
+                            headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(user)
-                        } 
+                        }
 
-                        fetch(PUTUserUrl + userData.id, requestOptions)
-                        // .then(response => response.json())
-                        // .catch(error => {
-                        //     console.error('хуйня какая-то:', error);
-                        //     console.log(response.status);
-                        // });
-                        
+                        fetch(PUTUserUrl + userData.id, requestOptions);
 
                         console.log(user);
                         document.querySelector('.users_body').removeChild(editorWindow);

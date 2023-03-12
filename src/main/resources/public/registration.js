@@ -32,162 +32,209 @@ regPasswordConfirmation.addEventListener('input', function () {
     this.value = this.value.replace(reg_eng_ru_number, '');
 });
 
-
-
-
 form.addEventListener('submit', function (submit_valid) {
     submit_valid.preventDefault();
+})
+
+function usernameValidate() {
     if (username.value == null || username.value == "") {
         usernameError.classList.add('error--active');
         usernameError.textContent = 'Это поле не должно быть пустым';
         username.classList.remove('form_place--valid');
         username.classList.add('form_place--invalid');
         return false;
+    } else if (username.value.length < 2) {
+        usernameError.classList.add('error--active');
+        usernameError.textContent = 'В этом поле не должно быть меньше 2-х символов';
+        username.classList.remove('form_place--valid');
+        username.classList.add('form_place--invalid');
+        return false;
+    } else if (username.value.length > 16) {
+        usernameError.classList.add('error--active');
+        usernameError.textContent = 'В этом поле не должно быть больше 16 символов';
+        username.classList.remove('form_place--valid');
+        username.classList.add('form_place--invalid');
+        return false;
     } else {
-        this.submit();
-        window.location.href = 'http://safg13.ddns.net:8080/index.html';   
+        username.classList.remove('form_place--invalid');
+        username.classList.add('form_place--valid');
+        usernameError.classList.remove('error--active');
+        return true;
     }
-})
+}
 
-form.addEventListener('input', function (input_valid) {
+function emailValidate() {
+    if (regEmail.value == null || regEmail.value == "") {
+        regEmailError.classList.add('error--active');
+        regEmailError.textContent = 'Это поле не должно быть пустым';
+        regEmail.classList.remove('form_place--valid');
+        regEmail.classList.add('form_place--invalid');
+        return false;
+    } else if (regEmail.value.length < 6) {
+        regEmailError.classList.add('error--active');
+        regEmailError.textContent = 'В этом поле не должно быть меньше 6 символов';
+        regEmail.classList.remove('form_place--valid');
+        regEmail.classList.add('form_place--invalid');
+        return false;
+    } else if (regEmail.value.length > 128) {
+        regEmailError.classList.add('error--active');
+        regEmailError.textContent = 'В этом поле не должно быть больше 128 символов';
+        regEmail.classList.remove('form_place--valid');
+        regEmail.classList.add('form_place--invalid');
+        return false;
+    } else {
+        regEmail.classList.remove('form_place--invalid');
+        regEmail.classList.add('form_place--valid');
+        regEmailError.classList.remove('error--active');
+        return true;
+    }
+}
+
+function phoneValidate() {
+    if (regTel.value == null || regTel.value == "") {
+        regTelError.classList.add('error--active');
+        regTelError.textContent = 'Это поле не должно быть пустым';
+        regTel.classList.remove('form_place--valid');
+        regTel.classList.add('form_place--invalid');
+        return false;
+    } else if (regTel.value.length < 11) {
+        regTelError.classList.add('error--active');
+        regTelError.textContent = 'В этом поле не должно быть меньше 11 символов';
+        regTel.classList.remove('form_place--valid');
+        regTel.classList.add('form_place--invalid');
+        return false;
+    } else if (regTel.value.length > 11) {
+        regTelError.classList.add('error--active');
+        regTelError.textContent = 'В этом поле не должно быть больше 11 символов';
+        regTel.classList.remove('form_place--valid');
+        regTel.classList.add('form_place--invalid');
+        return false;
+    } else {
+        regTel.classList.remove('form_place--invalid');
+        regTel.classList.add('form_place--valid');
+        regTelError.classList.remove('error--active');
+        return true;
+    }
+}
+
+function passwordValidate() {
+    if (regPassword.value == null || regPassword.value == "") {
+        regPasswordError.classList.add('error--active');
+        regPasswordError.textContent = 'Это поле не должно быть пустым';
+        regPassword.classList.remove('form_place--valid');
+        regPassword.classList.add('form_place--invalid');
+        return false;
+    } else if (regPassword.value.length < 8) {
+        regPasswordError.classList.add('error--active');
+        regPasswordError.textContent = 'В этом поле не должно быть меньше 8 символов';
+        regPassword.classList.remove('form_place--valid');
+        regPassword.classList.add('form_place--invalid');
+        return false;
+    } else if (regPassword.value.length > 36) {
+        regPasswordError.classList.add('error--active');
+        regPasswordError.textContent = 'В этом поле не должно быть больше 36 символов';
+        regPassword.classList.remove('form_place--valid');
+        regPassword.classList.add('form_place--invalid');
+        return false;
+    } else {
+        regPassword.classList.remove('form_place--invalid');
+        regPassword.classList.add('form_place--valid');
+        regPasswordError.classList.remove('error--active');
+        return true;
+    }
+}
+
+function passwordConfirmationValidate() {
+    if (regPasswordConfirmation.value == null || regPasswordConfirmation.value == "") {
+        regPasswordConfirmationError.classList.add('error--active');
+        regPasswordConfirmationError.textContent = 'Это поле не должно быть пустым';
+        regPasswordConfirmation.classList.remove('form_place--valid');
+        regPasswordConfirmation.classList.add('form_place--invalid');
+        return false;
+    } else if (regPasswordConfirmation.value.length < 8) {
+        regPasswordConfirmationError.classList.add('error--active');
+        regPasswordConfirmationError.textContent = 'В этом поле не должно быть меньше 8 символов';
+        regPasswordConfirmation.classList.remove('form_place--valid');
+        regPasswordConfirmation.classList.add('form_place--invalid');
+        return false;
+    } else if (regPasswordConfirmation.value.length > 36) {
+        regPasswordConfirmationError.classList.add('error--active');
+        regPasswordConfirmationError.textContent = 'В этом поле не должно быть больше 36 символов';
+        regPasswordConfirmation.classList.remove('form_place--valid');
+        regPasswordConfirmation.classList.add('form_place--invalid');
+        return false;
+    } else if (regPassword.value != regPasswordConfirmation.value) {
+        regPasswordConfirmationError.classList.add('error--active');
+        regPasswordConfirmationError.textContent = 'Пароли не совпадают';
+        regPasswordConfirmation.classList.remove('form_place--valid');
+        regPasswordConfirmation.classList.add('form_place--invalid');
+    } else {
+        regPasswordConfirmation.classList.remove('form_place--invalid');
+        regPasswordConfirmation.classList.add('form_place--valid');
+        regPasswordConfirmationError.classList.remove('error--active');
+        return true;
+    }
+}
+
+
+form.addEventListener('input', async function (input_valid) {
     input_valid.preventDefault();
 
-    username.addEventListener('input', function () {
-        if (username.value == null || username.value == "") {
-            usernameError.classList.add('error--active');
-            usernameError.textContent = 'Это поле не должно быть пустым';
-            username.classList.remove('form_place--valid');
-            username.classList.add('form_place--invalid');
-            return;
-        } else if (username.value.length < 2) {
-            usernameError.classList.add('error--active');
-            usernameError.textContent = 'В этом поле не должно быть меньше 2-х символов';
-            username.classList.remove('form_place--valid');
-            username.classList.add('form_place--invalid');
-            return;
-        } else if (username.value.length > 16) {
-            usernameError.classList.add('error--active');
-            usernameError.textContent = 'В этом поле не должно быть больше 16 символов';
-            username.classList.remove('form_place--valid');
-            username.classList.add('form_place--invalid');
-            return
-        } else {
-            username.classList.remove('form_place--invalid');
-            username.classList.add('form_place--valid');
-            usernameError.classList.remove('error--active');
-        }
-    })
- 
-    regEmail.addEventListener('input', function () {
-        if (regEmail.value == null || regEmail.value == "") {
-            regEmailError.classList.add('error--active');
-            regEmailError.textContent = 'Это поле не должно быть пустым';
-            regEmail.classList.remove('form_place--valid');
-            regEmail.classList.add('form_place--invalid');
-            return;
-        } else if (regEmail.value.length < 6) {
-            regEmailError.classList.add('error--active');
-            regEmailError.textContent = 'В этом поле не должно быть меньше 6 символов';
-            regEmail.classList.remove('form_place--valid');
-            regEmail.classList.add('form_place--invalid');
-            return;
-        } else if (regEmail.value.length > 128) {
-            regEmailError.classList.add('error--active');
-            regEmailError.textContent = 'В этом поле не должно быть больше 128 символов';
-            regEmail.classList.remove('form_place--valid');
-            regEmail.classList.add('form_place--invalid');
-            return
-        } else {
-            regEmail.classList.remove('form_place--invalid');
-            regEmail.classList.add('form_place--valid');
-            regEmailError.classList.remove('error--active');
-        }
+    username.addEventListener('input', async function () {
+        usernameValidate();
     })
 
-    regTel.addEventListener('input', function () {
-        
-        if (regTel.value == null || regTel.value == "") {
-            regTelError.classList.add('error--active');
-            regTelError.textContent = 'Это поле не должно быть пустым';
-            regTel.classList.remove('form_place--valid');
-            regTel.classList.add('form_place--invalid');
-            return;
-        } else if (regTel.value.length < 11) {
-            regTelError.classList.add('error--active');
-            regTelError.textContent = 'В этом поле не должно быть меньше 11 символов';
-            regTel.classList.remove('form_place--valid');
-            regTel.classList.add('form_place--invalid');
-            return;
-        } else if (regTel.value.length > 11) {
-            regTelError.classList.add('error--active');
-            regTelError.textContent = 'В этом поле не должно быть больше 11 символов';
-            regTel.classList.remove('form_place--valid');
-            regTel.classList.add('form_place--invalid');
-            return
-        } else {
-            regTel.classList.remove('form_place--invalid');
-            regTel.classList.add('form_place--valid');
-            regTelError.classList.remove('error--active');
-        }
+    regEmail.addEventListener('input', async function () {
+        emailValidate();
     })
 
-    regPassword.addEventListener('input', function () {
-        
-        if (regPassword.value == null || regPassword.value == "") {
-            regPasswordError.classList.add('error--active');
-            regPasswordError.textContent = 'Это поле не должно быть пустым';
-            regPassword.classList.remove('form_place--valid');
-            regPassword.classList.add('form_place--invalid');
-            return;
-        } else if (regPassword.value.length < 8) {
-            regPasswordError.classList.add('error--active');
-            regPasswordError.textContent = 'В этом поле не должно быть меньше 8 символов';
-            regPassword.classList.remove('form_place--valid');
-            regPassword.classList.add('form_place--invalid');
-            return;
-        } else if (regPassword.value.length > 36) {
-            regPasswordError.classList.add('error--active');
-            regPasswordError.textContent = 'В этом поле не должно быть больше 36 символов';
-            regPassword.classList.remove('form_place--valid');
-            regPassword.classList.add('form_place--invalid');
-            return
-        } else {
-            regPassword.classList.remove('form_place--invalid');
-            regPassword.classList.add('form_place--valid');
-            regPasswordError.classList.remove('error--active');
-        }
+    regTel.addEventListener('input', async function () {
+        phoneValidate();
     })
 
-    regPasswordConfirmation.addEventListener('input', function () {
-        
-        if (regPasswordConfirmation.value == null || regPasswordConfirmation.value == "") {
-            regPasswordConfirmationError.classList.add('error--active');
-            regPasswordConfirmationError.textContent = 'Это поле не должно быть пустым';
-            regPasswordConfirmation.classList.remove('form_place--valid');
-            regPasswordConfirmation.classList.add('form_place--invalid');
-            return;
-        } else if (regPasswordConfirmation.value.length < 8) {
-            regPasswordConfirmationError.classList.add('error--active');
-            regPasswordConfirmationError.textContent = 'В этом поле не должно быть меньше 8 символов';
-            regPasswordConfirmation.classList.remove('form_place--valid');
-            regPasswordConfirmation.classList.add('form_place--invalid');
-            return;
-        } else if (regPasswordConfirmation.value.length > 36) {
-            regPasswordConfirmationError.classList.add('error--active');
-            regPasswordConfirmationError.textContent = 'В этом поле не должно быть больше 36 символов';
-            regPasswordConfirmation.classList.remove('form_place--valid');
-            regPasswordConfirmation.classList.add('form_place--invalid');
-            return
-        } else if (regPassword.value != regPasswordConfirmation.value) {
-            regPasswordConfirmationError.classList.add('error--active');
-            regPasswordConfirmationError.textContent = 'Пароли не совпадают';
-            regPasswordConfirmation.classList.remove('form_place--valid');
-            regPasswordConfirmation.classList.add('form_place--invalid');
-        } else {
-            regPasswordConfirmation.classList.remove('form_place--invalid');
-            regPasswordConfirmation.classList.add('form_place--valid');
-            regPasswordConfirmationError.classList.remove('error--active');
-        }
+    regPassword.addEventListener('input', async function () {
+        passwordValidate();
     })
+
+    regPasswordConfirmation.addEventListener('input', async function () {
+        passwordConfirmationValidate();
+    })
+})
+
+const submitButton = document.querySelector('.form_btn');
+submitButton.addEventListener('click', function () {
+    usernameValidate();
+    emailValidate();
+    phoneValidate();
+    passwordValidate();
+    passwordConfirmationValidate();
+
+    if (
+        usernameValidate() == true &&
+        emailValidate() == true &&
+        phoneValidate() == true &&
+        passwordValidate() == true &&
+        passwordConfirmationValidate() == true) {
+
+        newUser = {
+            id: null,
+            name: username.value,
+            email: regEmail.value,
+            phone: regTel.value,
+            password: regPassword.value
+        }
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newUser)
+        }
+
+        fetch(POSTUserUrl + userData.id, requestOptions);
+
+        window.location.href = MAINURL + '/index.html';
+    }
+
+
 })
 
