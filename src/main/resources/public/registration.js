@@ -230,7 +230,7 @@ submitButton.addEventListener('click', function () {
             body: JSON.stringify(newUser)
         }
 
-        fetch(POSTUserUrl + userData.id, requestOptions);
+        fetch(POSTUserUrl, requestOptions);
 
         window.location.href = MAINURL + '/index.html';
     }
