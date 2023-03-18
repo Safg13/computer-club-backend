@@ -2,7 +2,7 @@ const url = 'https://jsonplaceholder.typicode.com/posts'; //testURL
 const htmlBody = document.querySelector('.users_body');
 const htmlContainer = document.querySelector('.users_conteiner');
 
-<test></test>
+
 fetch(GETusersUrl)
     .then(response => response.json())
     .then(data => {
