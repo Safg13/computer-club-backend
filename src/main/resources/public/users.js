@@ -8,8 +8,9 @@ fetch(GETusersUrl)
     .then(data => {
         if (Array.isArray(data) || !Array.isArray(data)) {
             data.forEach(data => {
+
                 let userJSONData = JSON.stringify(data);
-                let userData = JSON.parse(userJSONData)
+                let userData = JSON.parse(userJSONData);
 
 
                 const userItem = document.createElement('div');
@@ -198,7 +199,6 @@ fetch(GETusersUrl)
                             password: inputPassword.value
                         }
 
-                        console.log(JSON.stringify(user))
                         const requestOptions = {
                             method: 'PUT',
                             headers: { 'Content-Type': 'application/json' },
@@ -208,6 +208,7 @@ fetch(GETusersUrl)
                         fetch(PUTUserUrl + userData.id, requestOptions);
 
                         console.log(user);
+                        console.log(JSON.stringify(user));
                         
                         htmlContainer.removeChild(editorWindow);
                         htmlBody.classList.remove('scroll_blocker');

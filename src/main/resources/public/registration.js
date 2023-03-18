@@ -229,13 +229,41 @@ submitButton.addEventListener('click', function () {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
         }
-        console.log(JSON.stringify(newUser))
 
-        fetch(POSTUserUrl, requestOptions);
+        async function testPOST() {
+            let response = await fetch(POSTUserUrl2, requestOptions);
+            try {
+                const mainDiv = document.querySelector('.form_bottom');
+                const div = document.createElement('div');
+                mainDiv.appendChild(div);
+                const responseMsg = document.createElement('span');
+                responseMsg.classList = "response_error_messege";
 
-        window.location.href = MAINURL + '/index.html';
+                
+
+                let data = await response.json();
+                let responseCode = data.response_code;
+
+                const booleanResult = async function(){
+                    if (responseCode == 1) {
+                        responseMsg.innerHTML = 'Такой e-mail уже существует';
+                        div.appendChild(responseMsg);
+                        return false  
+                                     
+                    } else {
+                        return true
+                    }
+                }
+                return booleanResult();
+                
+            } catch (error) {
+                alert('error ', response.status);
+            }
+        }
+        
+        testPOST().then(result => {
+            console.log(result);
+        });
     }
-
-
 })
 

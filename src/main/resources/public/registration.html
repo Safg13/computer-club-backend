@@ -42,7 +42,7 @@
       </h2>
       <input type="text" name="id" hidden />
       <div class="input_box">
-        <input type="text" id="username" name="name" class="form_place empty-check" required>
+        <input type="text" id="username" name="name" class="form_place empty-check" required autocomplete="off">
         <label for="" class="div_label">Имя</label>
         <span class="name_error" aria-live="polite">Это поле не должно быть пустым</span>
       </div>
@@ -72,8 +72,16 @@
       </div>
 
       <div class="form_bottom">
-        <button class="form_btn">Отправить</button>
+        <div>
+          <button class="form_btn">Отправить</button>
+        </div>
+        <!-- <div>
+          <span
+            class="response_error_messege">QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ</span>
+        </div> -->
       </div>
+
+
       <div class="area">
         <label for="check" class="checkbox_label">
           <input type="checkbox" id="check" required>

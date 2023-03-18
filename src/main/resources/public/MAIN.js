@@ -5,3 +5,4 @@ const GETusersUrl = MAINURL + '/user/list';
 const DELETEUserUrl = MAINURL + '/user/';
 const PUTUserUrl = MAINURL + '/user/';
 const POSTUserUrl = MAINURL + '/user/add';
+const POSTUserUrl2 = MAINURL + '/user/add2';
