@@ -38,6 +38,21 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.getOne(id)));
     }
 
+//    @Operation(description = "Получить запись по email", method = "GetOne")
+//    @GetMapping("/getuserbyemail/{email}")
+//    public ResponseEntity<?> getByEmail(@PathVariable String email) {
+//        return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.getOneByEmail(email)));
+//    }
+
+    @Operation(description = "Создать запись2", method = "Create")
+    @PostMapping("/add2")
+    public ResponseEntity<Object> createUser(@RequestBody UserDto object) {
+        if (service.doesUserExistByEmail(object.getEmail())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"response\": email exists}");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.create(mapper.toEntity(object))));
+    }
+    
     @Operation(description = "Создать запись", method = "Create")
     @PostMapping("/add")
     public ResponseEntity<UserDto> create(@RequestBody UserDto object) { //RequestBody UserDto object изменил чтобы жрало x-www-form urlencoded
@@ -56,5 +71,4 @@ public class UserController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
-
 }
