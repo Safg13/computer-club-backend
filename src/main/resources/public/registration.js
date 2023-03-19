@@ -232,6 +232,7 @@ submitButton.addEventListener('click', function () {
 
         async function testPOST() {
             let response = await fetch(POSTUserUrl2, requestOptions);
+
             try {
                 const mainDiv = document.querySelector('.form_bottom');
                 const div = document.createElement('div');
@@ -239,13 +240,16 @@ submitButton.addEventListener('click', function () {
                 const responseMsg = document.createElement('span');
                 responseMsg.classList = "response_error_messege";
 
-                
-
                 let data = await response.json();
-                let responseCode = data.response_code;
+                let responseCode = data.response;
+
+                console.log(data);
+                console.log(response);
+                console.log(responseCode); 
+
 
                 const booleanResult = async function(){
-                    if (responseCode == 1) {
+                    if (responseCode == 'email exists') {
                         responseMsg.innerHTML = 'Такой e-mail уже существует';
                         div.appendChild(responseMsg);
                         return false  
