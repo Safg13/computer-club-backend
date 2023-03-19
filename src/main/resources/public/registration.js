@@ -243,23 +243,25 @@ submitButton.addEventListener('click', function () {
                 let data = await response.json();
                 let responseCode = data.response;
 
-                console.log(data);
-                console.log(response);
-                console.log(responseCode); 
-
 
                 const booleanResult = async function(){
                     if (responseCode == 'email exists') {
-                        responseMsg.innerHTML = 'Такой e-mail уже существует';
-                        div.appendChild(responseMsg);
-                        return false  
-                                     
+
+                        if (document.querySelector('.response_error_messege') == null) {
+                            responseMsg.innerHTML = 'Такой e-mail уже существует';
+                            div.appendChild(responseMsg);
+                            return false 
+                        } else {
+                            return false 
+                        }
+                   
                     } else {
                         return true
+                        
                     }
                 }
                 return booleanResult();
-                
+         
             } catch (error) {
                 alert('error ', response.status);
             }
@@ -267,6 +269,10 @@ submitButton.addEventListener('click', function () {
         
         testPOST().then(result => {
             console.log(result);
+
+            if (result == true) {
+                window.location.href = MAINURL;
+            }
         });
     }
 })
