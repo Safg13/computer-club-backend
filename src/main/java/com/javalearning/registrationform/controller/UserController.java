@@ -25,7 +25,7 @@ public class UserController extends GenericController<User, UserDto> {
 
 
     @Operation(description = "Создать запись c проверкой email на дубликат", method = "Create")
-    @PostMapping("/add2")
+    @PostMapping("/add")
     public ResponseEntity<Object> createUser(@RequestBody UserDto object) {
         if (service.doesUserExistByEmail(object.getEmail())) {
             return ResponseEntity.badRequest().body("{\"response\": \"email exists\"}");
