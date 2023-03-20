@@ -56,6 +56,7 @@ h1 {
 	--main-color: #243b55;
 	--cyan-color: #03e9f4;
 	--delete-red-color: #ff2e2e;
+	--error-text-message: #d43131;
 	--translucent-border: 1px solid rgba(0,0,0,0.3);
 
 }
@@ -120,6 +121,7 @@ mark {
 	cursor: pointer;
 	font-weight: 200;
 	font-size: 12px;
+	line-height: 30px;
 	color: #fff;
 	transition: color 0.2s ease-in-out, transform 0.1s ease-out;
 }
@@ -193,8 +195,7 @@ label:active {
 	padding: 70px 50px;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	font-weight: 500;
-	line-height: 30px;
+	font-weight: 500;	
 	background-color: aliceblue;
 	background: rgba(0, 0, 0, .5);
 	border-radius: 10px;
@@ -234,19 +235,34 @@ label:active {
 	border-bottom-right-radius: 10px;
 	font-weight: 100;
 	font-size: 12px;
-	color: #d43131;
+	line-height: 30px;
+	color: var(--error-text-message);
 	transition: all 0.2s ease-in-out;
 	opacity: 0;
-
 }
 
 .error--active {
 	opacity: 1;
 }
 
+.response_error_messege {
+	display: block;
+	position: relative;
+	margin: 0 auto;
+	max-width: 100%;
+	padding-top: 10px;
+	word-wrap: break-word;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 15px;
+	text-align: center;
+	color: var(--error-text-message);
+	transition: all 0.2s ease-in-out;
+}
+
 .form_place {
 	width: 100%;
-	margin-bottom: 55px;
+	margin-bottom: 50px;
 	padding: 5px 10px;
 	border: none;
 	border-bottom: 1px solid #fff;
@@ -291,18 +307,28 @@ label:active {
 }
 
 .form_bottom {
-	margin: auto;
+	position: relative;
+	width: 100%;
+	flex-direction: column;
+	flex-grow: 1;
+	margin: 0 auto;
+	margin-bottom: 10px;
 	justify-content: center;
 	align-items: center;
 }
 
+.form_bottom>div {
+	flex-grow: 1;
+	margin: 0 auto;
+}
+
 .form_btn {
 	position: relative;
-	display: inline-block;
+	margin: 0 auto;
+	display: block;
 	padding: 10px 30px;
 	font-size: 18px;
 	font-weight: 400;
-	margin-bottom: 20px;
 	background-color: transparent;
 	border: 2px solid var(--cyan-color);
 	border-radius: 10px;

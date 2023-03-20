@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService extends GenericService<User> {
     private final UserRepository repository;
 
     protected UserService(UserRepository repository) {
+        super(repository);
         this.repository = repository;
     }
 

@@ -7,7 +7,7 @@ import com.javalearning.registrationform.model.User;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends GenericRepository<User> {
 
     List<User> findAllByName(String name);
     List<User> findUserByPhone(String phone);

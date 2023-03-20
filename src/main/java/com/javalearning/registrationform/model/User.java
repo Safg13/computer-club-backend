@@ -12,11 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-    @Id
-    @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "default_generator")
-    private long id;
+public class User extends GenericModel{
 
     @Column(name = "name")
     private String name;
