@@ -15,26 +15,6 @@ public class UserService extends GenericService<User> {
         this.repository = repository;
     }
 
-    public List<User> listAll() {
-        return repository.findAll();
-    }
-
-    public User getOne(Long id) {
-        return repository.findById(id).orElseThrow();
-    }
-
-    public User create(User object) {
-        return repository.save(object);
-    }
-
-    public User update(User object) {
-        return repository.save(object);
-    }
-
-    public void delete(Long id) {
-        repository.deleteById(id);
-    }
-
     public boolean doesUserExistByEmail(String email) {
         return repository.existsByEmail(email);
     }
