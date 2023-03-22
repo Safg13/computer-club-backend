@@ -1,20 +1,32 @@
-let username = document.querySelector('#username');
-let usernameError = document.querySelector('span.name_error');
-let regEmail = document.querySelector('#reg_email')
-let regEmailError = document.querySelector('span.email_error')
-let regTel = document.querySelector('#reg_tel');
-let regTelError = document.querySelector('span.tel_error');
-let regPassword = document.querySelector('#reg_password');
-let regPasswordError = document.querySelector('span.password_error');
-let regPasswordConfirmation = document.querySelector('#reg_password_confirmation');
-let regPasswordConfirmationError = document.querySelector('span.password_confirmation_error');
-let form = document.querySelector('form');
+import _regeneratorRuntime from 'babel-runtime/regenerator';
 
-let reg_only_latters = /[^a-zA-Zа-яА-Я]/g
-let reg_eng_ru_number = /[^0-9a-zA-Zа-яА-Я]/g
-let reg_only_Numbers = /[^0-9\-()]/g
-let reg_email = /[^0-9a-zA-Zа-яА-Я\-@_.]/g
-let reg_password = /[^0-9a-zA-Zа-яА-Я\-@_.]/g
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var lox = ReactDOM.createRoot(document.querySelector('#like_button_container'));
+var element = React.createElement(
+    'h1',
+    null,
+    'Hello, pidors'
+);
+lox.render(element);
+
+var username = document.querySelector('#username');
+var usernameError = document.querySelector('span.name_error');
+var regEmail = document.querySelector('#reg_email');
+var regEmailError = document.querySelector('span.email_error');
+var regTel = document.querySelector('#reg_tel');
+var regTelError = document.querySelector('span.tel_error');
+var regPassword = document.querySelector('#reg_password');
+var regPasswordError = document.querySelector('span.password_error');
+var regPasswordConfirmation = document.querySelector('#reg_password_confirmation');
+var regPasswordConfirmationError = document.querySelector('span.password_confirmation_error');
+var form = document.querySelector('form');
+
+var reg_only_latters = /[^a-zA-Zа-яА-Я]/g;
+var reg_eng_ru_number = /[^0-9a-zA-Zа-яА-Я]/g;
+var reg_only_Numbers = /[^0-9\-()]/g;
+var reg_email = /[^0-9a-zA-Zа-яА-Я\-@_.]/g;
+var reg_password = /[^0-9a-zA-Zа-яА-Я\-@_.]/g;
 
 username.addEventListener('input', function () {
     this.value = this.value.replace(reg_only_latters, '');
@@ -34,7 +46,7 @@ regPasswordConfirmation.addEventListener('input', function () {
 
 form.addEventListener('submit', function (submit_valid) {
     submit_valid.preventDefault();
-})
+});
 
 function usernameValidate() {
     if (username.value == null || username.value == "") {
@@ -176,32 +188,103 @@ function passwordConfirmationValidate() {
     }
 }
 
+form.addEventListener('input', function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee6(input_valid) {
+        return _regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+                switch (_context6.prev = _context6.next) {
+                    case 0:
+                        input_valid.preventDefault();
 
-form.addEventListener('input', async function (input_valid) {
-    input_valid.preventDefault();
+                        username.addEventListener('input', _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
+                            return _regeneratorRuntime.wrap(function _callee$(_context) {
+                                while (1) {
+                                    switch (_context.prev = _context.next) {
+                                        case 0:
+                                            usernameValidate();
 
-    username.addEventListener('input', async function () {
-        usernameValidate();
-    })
+                                        case 1:
+                                        case 'end':
+                                            return _context.stop();
+                                    }
+                                }
+                            }, _callee, this);
+                        })));
 
-    regEmail.addEventListener('input', async function () {
-        emailValidate();
-    })
+                        regEmail.addEventListener('input', _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee2() {
+                            return _regeneratorRuntime.wrap(function _callee2$(_context2) {
+                                while (1) {
+                                    switch (_context2.prev = _context2.next) {
+                                        case 0:
+                                            emailValidate();
 
-    regTel.addEventListener('input', async function () {
-        phoneValidate();
-    })
+                                        case 1:
+                                        case 'end':
+                                            return _context2.stop();
+                                    }
+                                }
+                            }, _callee2, this);
+                        })));
 
-    regPassword.addEventListener('input', async function () {
-        passwordValidate();
-    })
+                        regTel.addEventListener('input', _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee3() {
+                            return _regeneratorRuntime.wrap(function _callee3$(_context3) {
+                                while (1) {
+                                    switch (_context3.prev = _context3.next) {
+                                        case 0:
+                                            phoneValidate();
 
-    regPasswordConfirmation.addEventListener('input', async function () {
-        passwordConfirmationValidate();
-    })
-})
+                                        case 1:
+                                        case 'end':
+                                            return _context3.stop();
+                                    }
+                                }
+                            }, _callee3, this);
+                        })));
 
-const submitButton = document.querySelector('.form_btn');
+                        regPassword.addEventListener('input', _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee4() {
+                            return _regeneratorRuntime.wrap(function _callee4$(_context4) {
+                                while (1) {
+                                    switch (_context4.prev = _context4.next) {
+                                        case 0:
+                                            passwordValidate();
+
+                                        case 1:
+                                        case 'end':
+                                            return _context4.stop();
+                                    }
+                                }
+                            }, _callee4, this);
+                        })));
+
+                        regPasswordConfirmation.addEventListener('input', _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee5() {
+                            return _regeneratorRuntime.wrap(function _callee5$(_context5) {
+                                while (1) {
+                                    switch (_context5.prev = _context5.next) {
+                                        case 0:
+                                            passwordConfirmationValidate();
+
+                                        case 1:
+                                        case 'end':
+                                            return _context5.stop();
+                                    }
+                                }
+                            }, _callee5, this);
+                        })));
+
+                    case 6:
+                    case 'end':
+                        return _context6.stop();
+                }
+            }
+        }, _callee6, this);
+    }));
+
+    return function (_x) {
+        return _ref.apply(this, arguments);
+    };
+}());
+
+var submitButton = document.querySelector('.form_btn');
 submitButton.addEventListener('click', function () {
     usernameValidate();
     emailValidate();
@@ -209,12 +292,98 @@ submitButton.addEventListener('click', function () {
     passwordValidate();
     passwordConfirmationValidate();
 
-    if (
-        usernameValidate() == true &&
-        emailValidate() == true &&
-        phoneValidate() == true &&
-        passwordValidate() == true &&
-        passwordConfirmationValidate() == true) {
+    if (usernameValidate() == true && emailValidate() == true && phoneValidate() == true && passwordValidate() == true && passwordConfirmationValidate() == true) {
+        var testPOST = function () {
+            var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee8() {
+                var response, mainDiv, div, responseMsg, data, responseCode, booleanResult;
+                return _regeneratorRuntime.wrap(function _callee8$(_context8) {
+                    while (1) {
+                        switch (_context8.prev = _context8.next) {
+                            case 0:
+                                _context8.next = 2;
+                                return fetch(POSTUserUrl, requestOptions);
+
+                            case 2:
+                                response = _context8.sent;
+                                _context8.prev = 3;
+                                mainDiv = document.querySelector('.form_bottom');
+                                div = document.createElement('div');
+
+                                mainDiv.appendChild(div);
+                                responseMsg = document.createElement('span');
+
+                                responseMsg.classList = "response_error_messege";
+
+                                _context8.next = 11;
+                                return response.json();
+
+                            case 11:
+                                data = _context8.sent;
+                                responseCode = data.response;
+
+                                booleanResult = function () {
+                                    var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee7() {
+                                        return _regeneratorRuntime.wrap(function _callee7$(_context7) {
+                                            while (1) {
+                                                switch (_context7.prev = _context7.next) {
+                                                    case 0:
+                                                        if (!(responseCode == 'email exists')) {
+                                                            _context7.next = 10;
+                                                            break;
+                                                        }
+
+                                                        if (!(document.querySelector('.response_error_messege') == null)) {
+                                                            _context7.next = 7;
+                                                            break;
+                                                        }
+
+                                                        responseMsg.innerHTML = 'Такой e-mail уже существует';
+                                                        div.appendChild(responseMsg);
+                                                        return _context7.abrupt('return', false);
+
+                                                    case 7:
+                                                        return _context7.abrupt('return', false);
+
+                                                    case 8:
+                                                        _context7.next = 11;
+                                                        break;
+
+                                                    case 10:
+                                                        return _context7.abrupt('return', true);
+
+                                                    case 11:
+                                                    case 'end':
+                                                        return _context7.stop();
+                                                }
+                                            }
+                                        }, _callee7, this);
+                                    }));
+
+                                    return function booleanResult() {
+                                        return _ref8.apply(this, arguments);
+                                    };
+                                }();
+
+                                return _context8.abrupt('return', booleanResult());
+
+                            case 17:
+                                _context8.prev = 17;
+                                _context8.t0 = _context8['catch'](3);
+
+                                alert('error ', response.status);
+
+                            case 20:
+                            case 'end':
+                                return _context8.stop();
+                        }
+                    }
+                }, _callee8, this, [[3, 17]]);
+            }));
+
+            return function testPOST() {
+                return _ref7.apply(this, arguments);
+            };
+        }();
 
         newUser = {
             id: '1',
@@ -222,52 +391,15 @@ submitButton.addEventListener('click', function () {
             email: regEmail.value,
             phone: regTel.value,
             password: regPassword.value
-        }
+        };
 
-        const requestOptions = {
+        var requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
-        }
+        };
 
-        async function testPOST() {
-            let response = await fetch(POSTUserUrl2, requestOptions);
-
-            try {
-                const mainDiv = document.querySelector('.form_bottom');
-                const div = document.createElement('div');
-                mainDiv.appendChild(div);
-                const responseMsg = document.createElement('span');
-                responseMsg.classList = "response_error_messege";
-
-                let data = await response.json();
-                let responseCode = data.response;
-
-
-                const booleanResult = async function(){
-                    if (responseCode == 'email exists') {
-
-                        if (document.querySelector('.response_error_messege') == null) {
-                            responseMsg.innerHTML = 'Такой e-mail уже существует';
-                            div.appendChild(responseMsg);
-                            return false 
-                        } else {
-                            return false 
-                        }
-                   
-                    } else {
-                        return true
-                        
-                    }
-                }
-                return booleanResult();
-         
-            } catch (error) {
-                alert('error ', response.status);
-            }
-        }
-        
-        testPOST().then(result => {
+        testPOST().then(function (result) {
             console.log(result);
 
             if (result == true) {
@@ -275,5 +407,4 @@ submitButton.addEventListener('click', function () {
             }
         });
     }
-})
-
+});

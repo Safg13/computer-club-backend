@@ -1,238 +1,283 @@
-const url = 'https://jsonplaceholder.typicode.com/posts'; //testURL
-const htmlBody = document.querySelector('.users_body');
-const htmlContainer = document.querySelector('.users_conteiner');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-fetch(GETusersUrl)
-    .then(response => response.json())
-    .then(data => {
-        if (Array.isArray(data) || !Array.isArray(data)) {
-            data.forEach(data => {
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-                let userJSONData = JSON.stringify(data);
-                let userData = JSON.parse(userJSONData);
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var url = 'https://jsonplaceholder.typicode.com/posts'; //testURL
+var htmlBody = document.querySelector('.users_body');
+var htmlContainer = document.querySelector('.users_conteiner');
 
-                const userItem = document.createElement('div');
-                userItem.classList = "user_item flex";
-                htmlContainer.appendChild(userItem);
-                userItem.dataset.userid = userData.id; // Присваивание Data-UserId
+var usersContainer = ReactDOM.createRoot(document.querySelector('.users_conteiner'));
 
-                const userItemInfo = document.createElement('div');
-                userItemInfo.classList = "user_item_info flex";
-                userItem.appendChild(userItemInfo);
+var pageEventsDiv = ReactDOM.createRoot(document.querySelector('.page_events'));
 
-                const id = document.createElement('div');
-                id.classList = "item_info_userId";
-                id.innerHTML = "<mark>id: </mark>" + userData.id
-                userItemInfo.appendChild(id);
+var pageEventsDiv2 = ReactDOM.createRoot(document.querySelector('.page_events2'));
 
-                const name = document.createElement('div');
-                name.classList = "item_info_userId";
-                name.innerHTML = "<mark>name: </mark>" + userData.name
-                userItemInfo.appendChild(name);
+var UserItemCreator = function (_React$Component) {
+    _inherits(UserItemCreator, _React$Component);
 
-                const email = document.createElement('div');
-                email.classList = "item_info_userId";
-                email.innerHTML = "<mark>email: </mark>" + userData.email
-                userItemInfo.appendChild(email);
+    function UserItemCreator(props) {
+        _classCallCheck(this, UserItemCreator);
 
-                const phone = document.createElement('div');
-                phone.classList = "item_info_userId";
-                phone.innerHTML = "<mark>phone: </mark>" + userData.phone
-                userItemInfo.appendChild(phone);
+        var _this = _possibleConstructorReturn(this, (UserItemCreator.__proto__ || Object.getPrototypeOf(UserItemCreator)).call(this, props));
 
-                const password = document.createElement('div');
-                password.classList = "item_info_userId";
-                password.innerHTML = "<mark>password: </mark>" + userData.password
-                userItemInfo.appendChild(password);
+        _this.pageBlockerOn = _this.pageBlockerOn.bind(_this);
+        _this.pageBlockerOff = _this.pageBlockerOff.bind(_this);
+        _this.openUpdateWindow = _this.openUpdateWindow.bind(_this);
+        _this.deleteUser = _this.deleteUser.bind(_this);
+        _this.closeUpdateWindow = _this.closeUpdateWindow.bind(_this);
+        _this.confirmUpdate = _this.confirmUpdate.bind(_this);
 
-                const userItemRight = document.createElement('div');
-                userItemRight.className = "user_item_buttons flex";
-                userItem.appendChild(userItemRight);
+        _this.state = { pageBlockerState: false };
+        return _this;
+    }
 
-                const userItemUpdateBtn = document.createElement('button');
-                userItemUpdateBtn.classList.add('user_item_btn');
-                userItemUpdateBtn.textContent = "Редактировать";
-                userItemRight.appendChild(userItemUpdateBtn);
-                userItemUpdateBtn.addEventListener('click', function () {
-
-                    htmlBody.classList.add('scroll_blocker');
-
-                    const pageBlocker = document.createElement('div');
-                    pageBlocker.classList = "page_blocker";
-                    htmlBody.prepend(pageBlocker);
-
-                    const editorWindow = document.createElement('div');
-                    editorWindow.classList = "editor_window flex";
-                    htmlContainer.appendChild(editorWindow);
-
-                    const closeBtnLink = document.createElement('a');
-                    closeBtnLink.classList = "editor_window_close";
-                    closeBtnLink.tabIndex = "1";
-                    editorWindow.appendChild(closeBtnLink);
-                   
-                    const closeSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                    closeSvg.setAttribute("width", "25px");
-                    closeSvg.setAttribute("height", "25px");
-                    closeSvg.setAttribute("viewBox", "0 0 1024 1024");
-                    closeSvg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-                    closeSvg.innerHTML = '<path d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z"/>';
-                    closeBtnLink.appendChild(closeSvg);
-
-                    closeBtnLink.addEventListener('click', function() {
-                        htmlContainer.removeChild(editorWindow);
-                        htmlBody.classList.remove('scroll_blocker');
-                        htmlBody.removeChild(pageBlocker);
-                    })
-
-                    const editorWindowTitle = document.createElement('h2');
-                    editorWindowTitle.classList = "editor_window_title";
-                    editorWindowTitle.innerHTML = "Редактирование";
-                    editorWindow.appendChild(editorWindowTitle);
-
-                    const editorMainDiv = document.createElement('div');
-                    editorMainDiv.classList = "editor_window_place_div";
-                    editorWindow.appendChild(editorMainDiv);
-
-                    function createEditorId() {
-                        const editorDiv = document.createElement('div');
-                        editorMainDiv.appendChild(editorDiv);
-
-                        const spanId = document.createElement('span');
-                        spanId.classList = "editor_window_label";
-                        spanId.innerHTML = "id";
-                        editorDiv.appendChild(spanId);
-
-                        const inputId = document.createElement('input');
-                        inputId.classList = "form_place editor_window_place--non-active";
-                        inputId.type = "text";
-                        inputId.value = userData.id;
-                        inputId.readOnly = true;
-                        editorDiv.appendChild(inputId);
-                    }
-                    createEditorId();
-
-                    const inputName = document.createElement('input');
-                    inputName.value = userData.name;
-
-                    function createEditorName() {
-                        const editorDiv = document.createElement('div');
-                        editorMainDiv.appendChild(editorDiv);
-
-                        const spanName = document.createElement('span');
-                        spanName.classList = "editor_window_label";
-                        spanName.innerHTML = "name";
-                        editorDiv.appendChild(spanName);
-
-                        inputName.classList = "form_place editor_window_place";
-                        inputName.type = "text";
-                        editorDiv.appendChild(inputName);
-                    }
-                    createEditorName();
-
-                    const inputEmail = document.createElement('input');
-                    inputEmail.value = userData.email;
-
-                    function createEditorEmail() {
-                        const editorDiv = document.createElement('div');
-                        editorMainDiv.appendChild(editorDiv);
-
-                        const spanEmail = document.createElement('span');
-                        spanEmail.classList = "editor_window_label";
-                        spanEmail.innerHTML = "email";
-                        editorDiv.appendChild(spanEmail);
-
-                        inputEmail.classList = "form_place editor_window_place";
-                        inputEmail.type = "text";
-                        editorDiv.appendChild(inputEmail);
-                    }
-                    createEditorEmail();
-
-                    const inputPhone = document.createElement('input');
-                    inputPhone.value = userData.phone;
-
-                    function createEditorPhone() {
-                        const editorDiv = document.createElement('div');
-                        editorMainDiv.appendChild(editorDiv);
-
-                        const spanPhone = document.createElement('span');
-                        spanPhone.classList = "editor_window_label";
-                        spanPhone.innerHTML = "phone";
-                        editorDiv.appendChild(spanPhone);
-
-                        inputPhone.classList = "form_place editor_window_place";
-                        inputPhone.type = "text";
-                        editorDiv.appendChild(inputPhone);
-                    }
-                    createEditorPhone();
-
-                    const inputPassword = document.createElement('input');
-                    inputPassword.value = userData.password;
-
-                    function createEditorPassword() {
-                        const editorDiv = document.createElement('div');
-                        editorMainDiv.appendChild(editorDiv);
-
-                        const spanPassword = document.createElement('span');
-                        spanPassword.classList = "editor_window_label";
-                        spanPassword.innerHTML = "password";
-                        editorDiv.appendChild(spanPassword);
-
-                        inputPassword.classList = "form_place editor_window_place";
-                        inputPassword.type = "text";
-                        editorDiv.appendChild(inputPassword);
-                    }
-                    createEditorPassword();
-
-                    const editorWindowSubmitButton = document.createElement('button');
-                    editorWindowSubmitButton.classList = "editor_window_submit";
-                    editorWindowSubmitButton.innerHTML = "Подтвердить";
-                    editorWindow.appendChild(editorWindowSubmitButton);
-
-                    editorWindowSubmitButton.addEventListener('click', function () {
-                        user = {
-                            id: userData.id,
-                            name: inputName.value,
-                            email: inputEmail.value,
-                            phone: inputPhone.value,
-                            password: inputPassword.value
-                        }
-
-                        const requestOptions = {
-                            method: 'PUT',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(user)
-                        }
-
-                        fetch(PUTUserUrl + userData.id, requestOptions);
-
-                        console.log(user);
-                        console.log(JSON.stringify(user));
-                        
-                        htmlContainer.removeChild(editorWindow);
-                        htmlBody.classList.remove('scroll_blocker');
-                        htmlBody.removeChild(pageBlocker);
-                    })
-                })
-                const userItemDeleteBtn = document.createElement('button');
-                userItemDeleteBtn.className = "user_item_btn user_item_delete_btn";
-                userItemDeleteBtn.textContent = "Удалить";
-                userItemRight.appendChild(userItemDeleteBtn);
-                userItemDeleteBtn.addEventListener('click', function () {
-                    document.querySelector('.users_conteiner').removeChild(userItem);
-                    fetch((DELETEUserUrl + userData.id), {
-                        method: 'DELETE'
-                    })
-                });
-            });
+    _createClass(UserItemCreator, [{
+        key: 'pageBlockerOn',
+        value: function pageBlockerOn() {
+            this.setState({ pageBlockerState: true });
+            var pageBlock = React.createElement('div', { className: 'page_blocker' });
+            pageEventsDiv2.render(pageBlock);
         }
-    })
-    .catch(error => {
-        console.error('хуйня какая-то:', error);
+    }, {
+        key: 'pageBlockerOff',
+        value: function pageBlockerOff() {
+            this.setState({ pageBlockerState: false });
+            pageEventsDiv2.render(null);
+        }
+    }, {
+        key: 'confirmUpdate',
+        value: function confirmUpdate() {
+            user = {
+                id: this.props.id,
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                password: document.getElementById("password").value
+            };
+
+            var requestOptions = {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(user)
+            };
+
+            fetch(PUTUserUrl + this.props.id, requestOptions);
+
+            this.closeUpdateWindow();
+        }
+    }, {
+        key: 'closeUpdateWindow',
+        value: function closeUpdateWindow() {
+            this.pageBlockerOff();
+            pageEventsDiv.render(null);
+        }
+    }, {
+        key: 'openUpdateWindow',
+        value: function openUpdateWindow() {
+            this.pageBlockerOn();
+
+            var editorWindow = React.createElement(
+                'div',
+                { className: 'editor_window flex' },
+                React.createElement(
+                    'a',
+                    { className: 'editor_window_close', onClick: this.closeUpdateWindow, tabIndex: '1' },
+                    React.createElement(
+                        'svg',
+                        { width: '25px', height: '25px', viewBox: '0 0 1024 1024',
+                            xmlns: 'http://www.w3.org/2000/svg' },
+                        React.createElement('path', {
+                            d: 'M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504 738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512 828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496 285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512 195.2 285.696a64 64 0 0 1 0-90.496z' })
+                    )
+                ),
+                React.createElement(
+                    'h2',
+                    { className: 'editor_window_title' },
+                    '\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u043D\u0438\u0435'
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'editor_window_place_div' },
+                    React.createElement(
+                        'div',
+                        null,
+                        React.createElement(
+                            'span',
+                            { className: 'editor_window_label' },
+                            'id'
+                        ),
+                        React.createElement('input', { type: 'text', id: 'id', value: this.props.id, className: 'form_place editor_window_place--non-active', readOnly: true })
+                    ),
+                    React.createElement(
+                        'div',
+                        null,
+                        React.createElement(
+                            'span',
+                            { className: 'editor_window_label' },
+                            'name'
+                        ),
+                        React.createElement('input', { type: 'text', id: 'name', defaultValue: this.props.name, className: 'form_place editor_window_place' })
+                    ),
+                    React.createElement(
+                        'div',
+                        null,
+                        React.createElement(
+                            'span',
+                            { className: 'editor_window_label' },
+                            'email'
+                        ),
+                        React.createElement('input', { type: 'text', id: 'email', defaultValue: this.props.email, className: 'form_place editor_window_place' })
+                    ),
+                    React.createElement(
+                        'div',
+                        null,
+                        React.createElement(
+                            'span',
+                            { className: 'editor_window_label' },
+                            'phone'
+                        ),
+                        React.createElement('input', { type: 'text', id: 'phone', defaultValue: this.props.phone, className: 'form_place editor_window_place' })
+                    ),
+                    React.createElement(
+                        'div',
+                        null,
+                        React.createElement(
+                            'span',
+                            { className: 'editor_window_label' },
+                            'password'
+                        ),
+                        React.createElement('input', { type: 'text', id: 'password', defaultValue: this.props.password, className: 'form_place editor_window_place' })
+                    )
+                ),
+                React.createElement(
+                    'button',
+                    { onClick: this.confirmUpdate, className: 'editor_window_submit' },
+                    '\u041F\u0440\u0438\u043D\u044F\u0442\u044C'
+                )
+            );
+
+            pageEventsDiv.render(editorWindow);
+        }
+    }, {
+        key: 'deleteUser',
+        value: function deleteUser() {
+            fetch(DELETEUserUrl + this.props.id, {
+                method: 'DELETE'
+            });
+            document.querySelector('.users_conteiner').removeChild(document.querySelector('.user_item'));
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return React.createElement(
+                'div',
+                { className: 'user_item flex', userid: this.props.id },
+                React.createElement(
+                    'div',
+                    { className: 'user_item_info flex' },
+                    React.createElement(
+                        'div',
+                        { className: 'item_info_userId' },
+                        React.createElement(
+                            'mark',
+                            null,
+                            'id: '
+                        ),
+                        this.props.id
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'item_info_userId' },
+                        React.createElement(
+                            'mark',
+                            null,
+                            'name: '
+                        ),
+                        this.props.name
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'item_info_userId' },
+                        React.createElement(
+                            'mark',
+                            null,
+                            'email: '
+                        ),
+                        this.props.email
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'item_info_userId' },
+                        React.createElement(
+                            'mark',
+                            null,
+                            'phone: '
+                        ),
+                        this.props.phone
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'item_info_userId' },
+                        React.createElement(
+                            'mark',
+                            null,
+                            'password: '
+                        ),
+                        this.props.password
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { className: 'user_item_buttons flex' },
+                    React.createElement(
+                        'button',
+                        { className: 'user_item_btn', onClick: this.openUpdateWindow },
+                        '\u0420\u0435\u0434\u0430\u043A\u0442\u0438\u0440\u043E\u0432\u0430\u0442\u044C'
+                    ),
+                    React.createElement(
+                        'button',
+                        { className: 'user_item_btn user_item_delete_btn', onClick: this.deleteUser },
+                        '\u0423\u0434\u0430\u043B\u0438\u0442\u044C'
+                    )
+                )
+            );
+        }
+    }]);
+
+    return UserItemCreator;
+}(React.Component);
+
+function getUsers() {
+    fetch(GETusersUrl).then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        var userItems = data.map(function (user) {
+            return React.createElement(UserItemCreator, {
+                key: user.id,
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                phone: user.phone,
+                password: user.password
+            });
+        });
+
+        usersContainer.render(React.createElement(
+            React.StrictMode,
+            null,
+            React.createElement(
+                'div',
+                null,
+                userItems
+            )
+        ));
+    }).catch(function (error) {
+        console.error('Error:', error);
     });
+}
 
-
-
-
-
+getUsers();
