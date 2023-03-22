@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @SequenceGenerator(name = "default_generator", sequenceName = "publishing_seq", allocationSize = 1)
 public class Order extends GenericModel {
-    @Column(name = "rent_date")
-    private LocalDateTime rentDate;
-    @Column(name = "rent_period")
-    private Integer rentPeriod;
+    @Column(name = "appointment_date")
+    private LocalDateTime appointmentDate;
+    @Column(name = "appointment_period")
+    private Integer appointmentPeriod;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_PUBLISHING_USER"))

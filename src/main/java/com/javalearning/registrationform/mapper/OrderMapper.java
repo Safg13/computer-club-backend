@@ -21,10 +21,10 @@ public class OrderMapper extends GenericMapper<Order, OrderDto> {
         this.userRepository = userRepository;
     }
 
-    @PostConstruct
-    public void setupMapper() {
-        super.mapper.createTypeMap(Order.class, OrderDto.class)
-                .addMappings(m -> m.skip(OrderDto::setUserId)).setPostConverter(toDtoConverter());
-    }
+//    @PostConstruct
+//    public void setupMapper() {
+//        super.mapper.createTypeMap(Order.class, OrderDto.class)
+//                .addMappings(m -> m.skip(OrderDto::setUserId)).setPostConverter(toDtoConverter());
+//    }
 
 }
