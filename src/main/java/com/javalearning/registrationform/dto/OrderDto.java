@@ -10,9 +10,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class OrderDto extends GenericDto{
 
-    private LocalDateTime rentDate;
-    private Integer rentPeriod;
-    private Long userId;
+    private LocalDateTime appointmentDate;
+    private Integer appointmentPeriod;
     private UserDto user;
 
 }
