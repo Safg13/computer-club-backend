@@ -15,5 +15,5 @@ public abstract class GenericModel {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "default_generator")
-    private long id;
+    protected long id;
 }

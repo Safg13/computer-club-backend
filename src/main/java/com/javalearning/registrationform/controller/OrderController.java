@@ -8,10 +8,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -19,7 +16,7 @@ import java.time.LocalDateTime;
 @CrossOrigin
 @RestController
 @RequestMapping(value = "order")
-public class OrderController extends GenericController<Order, OrderDto>{
+public class OrderController extends GenericController<Order, OrderDto> {
 
     private final OrderService service;
     private final OrderMapper mapper;
@@ -39,5 +36,12 @@ public class OrderController extends GenericController<Order, OrderDto>{
         return ResponseEntity.status(HttpStatus.OK).body("Данное время свободно");
     }
 
-
+    @Operation(description = "Создать заказ с проверкой отсутствия записи на это время", method = "Create")
+    @PostMapping("/add-order")
+    public ResponseEntity<Object> addOrder(@RequestBody OrderDto orderDto) {
+        if (service.isAppointmentExistsByDate(orderDto.getAppointmentDate())) {
+            return ResponseEntity.badRequest().body("{\"response\": \"appointment exists\"}");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.addOrder(orderDto)));
+    }
 }
