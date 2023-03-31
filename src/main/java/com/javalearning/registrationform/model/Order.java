@@ -19,6 +19,14 @@ public class Order extends GenericModel {
     private Integer appointmentPeriod;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_PUBLISHING_USER"))
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_ORDERING_USER"))
     private User user;
+
+    @Builder
+    public Order(Long id, LocalDateTime appointmentDate, Integer appointmentPeriod, User user) {
+        super(id);
+        this.appointmentDate = appointmentDate;
+        this.appointmentPeriod = appointmentPeriod;
+        this.user = user;
+    }
 }
