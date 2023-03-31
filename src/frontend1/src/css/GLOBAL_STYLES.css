@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+    font-family: 'Roboto', 'font', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+	line-height: 24px;
+    color: #fff;
+
+}
+
+:root {
+	--main-color: #243b55;
+	--cyan-color: #03e9f4;
+	--delete-red-color: #ff2e2e;
+	--error-text-message: #d43131;
+	--translucent-border: 1px solid rgba(0, 0, 0, 0.3);
+
+}
+
+.App {
+	all: inherit;
+}
+
+#root {
+	all: inherit;
+}
+

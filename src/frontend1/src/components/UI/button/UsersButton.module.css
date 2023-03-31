@@ -1,0 +1,68 @@
+@import url(../../../css/GLOBAL_STYLES.css);
+
+.UsersButton {
+	margin-bottom: 10px;
+	padding: 10px 30px;
+	width: 200px;
+	height: 50px;
+	font-size: 12px;
+	background-color: transparent;
+	border: 2px solid var(--cyan-color);
+	border-radius: 10px;
+	color: var(--cyan-color);
+	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.UsersButton:focus {
+	outline: 1px solid var(--cyan-color);
+	outline-offset: 2px;
+}
+
+.UsersButton:hover {
+	background-color: var(--cyan-color);
+	color: #fff;
+	box-shadow: 0 0 5px var(--cyan-color),
+		0 0 50px var(--cyan-color);
+
+}
+
+.UsersButton:active {
+	filter: brightness(70%);
+	transform: scale(90%);
+	outline: 0px solid var(--cyan-color);
+	outline-offset: 0px;
+}
+
+.UsersDeleteButton {
+	margin-bottom: 10px;
+	padding: 10px 30px;
+	width: 200px;
+	height: 50px;
+	font-size: 12px;
+	background-color: transparent;
+	border: 2px solid var(--cyan-color);
+	border-radius: 10px;
+	color: var(--cyan-color);
+	transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.UsersDeleteButton:focus {
+	outline: 1px solid var(--cyan-color);
+	outline-offset: 2px;
+}
+
+.UsersDeleteButton:hover {
+	background-color: var(--delete-red-color);
+	border-color: var(--delete-red-color);
+	color: #fff;
+	box-shadow: 0 0 5px var(--delete-red-color),
+		0 0 50px var(--delete-red-color);
+
+}
+
+.UsersDeleteButton:active {
+	filter: brightness(70%);
+	transform: scale(90%);
+	outline: 0px solid var(--cyan-color);
+	outline-offset: 0px;
+}
