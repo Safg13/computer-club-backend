@@ -1,0 +1,19 @@
+@import url(../../../css/GLOBAL_STYLES.css);
+
+.default {
+	width: 100%;
+	margin-bottom: 50px;
+	padding: 5px 10px;
+	border: none;
+	border-bottom: 1px solid #fff;
+	background-color: transparent;
+	transition: outline 0.5s ease-in-out, background-color 0.2s ease, border-radius 0.5s ease-in-out, border-color 0.5s ease-in-out;
+	color: #fff;
+	outline-color: rgba(0, 0, 0, 0);
+}
+
+.default:focus {
+	outline: 1px solid var(--cyan-color);
+	outline-offset: 3px;
+	border-radius: 3px
+}
