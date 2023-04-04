@@ -4,8 +4,6 @@ import com.javalearning.registrationform.model.User;
 import com.javalearning.registrationform.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserService extends GenericService<User> {
     private final UserRepository repository;
@@ -15,7 +13,11 @@ public class UserService extends GenericService<User> {
         this.repository = repository;
     }
 
-    public boolean doesUserExistByEmail(String email) {
+    public boolean isUserExistByEmail(String email) {
         return repository.existsByEmail(email);
+    }
+
+    public boolean isUserExistByPhone(String phone) {
+        return repository.existsByPhone(phone);
     }
 }

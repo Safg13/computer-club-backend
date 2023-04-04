@@ -24,12 +24,17 @@ public class UserController extends GenericController<User, UserDto> {
     }
 
 
-    @Operation(description = "Создать запись c проверкой email на дубликат", method = "Create")
+    @Operation(description = "Создать запись c проверкой email и телефона на дубликат", method = "Create")
     @PostMapping("/add")
     public ResponseEntity<Object> createUser(@RequestBody UserDto object) {
-        if (service.doesUserExistByEmail(object.getEmail())) {
+        if (service.isUserExistByEmail(object.getEmail())) {
             return ResponseEntity.badRequest().body("{\"response\": \"email exists\"}");
         }
+
+        if (service.isUserExistByPhone(object.getPhone())) {
+            return ResponseEntity.badRequest().body("{\"response\": \"phone exists\"}");
+        }
+
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.create(mapper.toEntity(object))));
     }
 
