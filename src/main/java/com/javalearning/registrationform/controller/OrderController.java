@@ -38,7 +38,7 @@ public class OrderController extends GenericController<Order, OrderDto> {
 
     @Operation(description = "Создать заказ с проверкой отсутствия записи на это время", method = "Create")
     @PostMapping("/add-order")
-    public ResponseEntity<Object> addOrder(@RequestBody OrderDto orderDto) {
+    public ResponseEntity<Object> addAppointment(@RequestBody OrderDto orderDto) {
         if (service.isAppointmentExistsByDate(orderDto.getAppointmentDate())) {
             return ResponseEntity.badRequest().body("{\"response\": \"appointment exists\"}");
         }

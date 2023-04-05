@@ -27,11 +27,13 @@ public class UserController extends GenericController<User, UserDto> {
     @Operation(description = "Создать запись c проверкой email и телефона на дубликат", method = "Create")
     @PostMapping("/add")
     public ResponseEntity<Object> createUser(@RequestBody UserDto object) {
-        if (service.isUserExistByEmail(object.getEmail())) {
+        if (service.isUserExistByEmail(object.getEmail()) && service.isUserExistByPhone(object.getPhone())) {
+            return ResponseEntity.badRequest().body("{\"response\": \"user exists\"}");
+        }
+        else if (service.isUserExistByEmail(object.getEmail())) {
             return ResponseEntity.badRequest().body("{\"response\": \"email exists\"}");
         }
-
-        if (service.isUserExistByPhone(object.getPhone())) {
+        else if (service.isUserExistByPhone(object.getPhone())) {
             return ResponseEntity.badRequest().body("{\"response\": \"phone exists\"}");
         }
 
