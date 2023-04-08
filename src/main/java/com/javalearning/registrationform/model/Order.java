@@ -3,6 +3,7 @@ package com.javalearning.registrationform.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,8 +14,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @SequenceGenerator(name = "default_generator", sequenceName = "publishing_seq", allocationSize = 1)
 public class Order extends GenericModel {
+
     @Column(name = "appointment_date")
     private LocalDateTime appointmentDate;
+
+    @Column(name = "appointment_day")
+    private LocalDate appointmentDay;
+
     @Column(name = "appointment_period")
     private Integer appointmentPeriod;
 
