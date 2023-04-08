@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class OrderDto extends GenericDto{
 
-    private LocalDateTime appointmentDate;
+    private LocalDateTime appointmentFullDate;
     private LocalDate appointmentDay;
     private Integer appointmentPeriod;
     private UserDto user;

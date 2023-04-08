@@ -15,8 +15,8 @@ import java.time.LocalDateTime;
 @SequenceGenerator(name = "default_generator", sequenceName = "publishing_seq", allocationSize = 1)
 public class Order extends GenericModel {
 
-    @Column(name = "appointment_date")
-    private LocalDateTime appointmentDate;
+    @Column(name = "appointment_date_full")
+    private LocalDateTime appointmentFullDate;
 
     @Column(name = "appointment_day")
     private LocalDate appointmentDay;
@@ -29,9 +29,10 @@ public class Order extends GenericModel {
     private User user;
 
     @Builder
-    public Order(Long id, LocalDateTime appointmentDate, Integer appointmentPeriod, User user) {
+    public Order(Long id, LocalDateTime appointmentFullDate, LocalDate appointmentDay, Integer appointmentPeriod, User user) {
         super(id);
-        this.appointmentDate = appointmentDate;
+        this.appointmentFullDate = appointmentFullDate;
+        this.appointmentDay = appointmentDay;
         this.appointmentPeriod = appointmentPeriod;
         this.user = user;
     }

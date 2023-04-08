@@ -6,7 +6,9 @@ import com.javalearning.registrationform.model.User;
 import com.javalearning.registrationform.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class OrderService extends GenericService<Order> {
@@ -23,7 +25,7 @@ public class OrderService extends GenericService<Order> {
 
     public boolean isAppointmentExistsByDate(LocalDateTime appointmentDate) {
         LocalDateTime trimmedDate = appointmentDate.withMinute(0).withSecond(0).withNano(0);
-        return repository.existsByAppointmentDate(trimmedDate);
+        return repository.existsByAppointmentFullDate(trimmedDate);
     }
 
     public Order addOrder(OrderDto orderDto) {
@@ -31,11 +33,16 @@ public class OrderService extends GenericService<Order> {
 
         Order order = Order.builder()
                 .id(0L)
-                .appointmentDate(orderDto.getAppointmentDate().withMinute(0).withSecond(0).withNano(0))
+                .appointmentFullDate(orderDto.getAppointmentFullDate().withMinute(0).withSecond(0).withNano(0))
+                .appointmentDay(orderDto.getAppointmentFullDate().toLocalDate())
                 .appointmentPeriod(orderDto.getAppointmentPeriod())
                 .user(user)
                 .build();
         return repository.save(order);
+    }
+
+    public List<Order> findOrdersByDate(LocalDate date) {
+        return repository.findAllByAppointmentDay(date);
     }
 
 }
