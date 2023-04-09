@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @CrossOrigin
@@ -43,5 +45,11 @@ public class OrderController extends GenericController<Order, OrderDto> {
             return ResponseEntity.badRequest().body("{\"response\": \"appointment exists\"}");
         }
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.addOrder(orderDto)));
+    }
+
+    @Operation(description = "Получить список всех заказов на конкретный день", method = "GetAll")
+    @GetMapping("/orderslist/{date}")
+    public ResponseEntity<List<OrderDto>> getOrdersByDate(@PathVariable LocalDate date) {
+        return ResponseEntity.ok().body(service.findOrdersByDate(date).stream().map(mapper::toDto).toList());
     }
 }

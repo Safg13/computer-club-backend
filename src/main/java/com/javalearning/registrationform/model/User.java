@@ -26,4 +26,10 @@ public class User extends GenericModel{
     @Column(name = "password")
     private String password;
 
+    @Column(name = "role_id")
+    private int roleId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "roles_id", foreignKey = @ForeignKey(name = "FK_USER_ROLES"))
+    private Role role;
 }
