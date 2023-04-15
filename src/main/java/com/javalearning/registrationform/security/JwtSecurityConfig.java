@@ -69,7 +69,7 @@ public class JwtSecurityConfig {
                 })
                 .and().authorizeHttpRequests()
                 //Доступ только для авторизованных пользователей
-                .requestMatchers("/rest/**").hasRole("USER") //руты которые доступны юзеру
+                .requestMatchers("/order/**").hasRole("USER") //руты которые доступны юзеру
                 .anyRequest().permitAll()
                 .and()
                 //JWT Token VALID or NOT

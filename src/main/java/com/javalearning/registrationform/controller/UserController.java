@@ -59,7 +59,7 @@ public class UserController extends GenericController<User, UserDto> {
 
         if(!service.checkPassword(loginDto)) {
 
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized user!\nWrongPassword");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized user!\nWrong Password");
         }
 
         UserDetails foundUser = customUserDetailsService.loadUserByUsername(loginDto.getLogin());
