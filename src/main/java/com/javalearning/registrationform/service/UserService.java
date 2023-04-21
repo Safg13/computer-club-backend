@@ -39,14 +39,26 @@ public class UserService extends GenericService<User> {
     }
 
     public boolean checkPassword(LoginDto loginDto) {
-        return bCryptPasswordEncoder.matches(loginDto.getPassword(), getByLogin(loginDto.getLogin()).getPassword());
+        if (isUserExistByLogin(loginDto.getLogin())) {
+            return bCryptPasswordEncoder.matches(loginDto.getPassword(), getByLogin(loginDto.getLogin()).getPassword());
+        } else {
+            return false;
+        }
     }
 
     public boolean isUserExistByEmail(String email) {
         return repository.existsByEmail(email);
     }
 
+    public boolean isUserExistByLogin(String login) {
+        return repository.existsByLogin(login);
+    }
+
     public boolean isUserExistByPhone(String phone) {
         return repository.existsByPhone(phone);
+    }
+
+    public Long getUserIdByUsername(String login) {
+        return repository.findUserByLogin(login).getId();
     }
 }

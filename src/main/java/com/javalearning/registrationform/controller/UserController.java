@@ -40,10 +40,8 @@ public class UserController extends GenericController<User, UserDto> {
     @Operation(description = "Создать запись c проверкой email и телефона на дубликат", method = "Create")
     @PostMapping("/add")
     public ResponseEntity<Object> createUser(@RequestBody UserDto object) {
-        if (service.isUserExistByEmail(object.getEmail()) && service.isUserExistByPhone(object.getPhone())) {
-            return ResponseEntity.badRequest().body("{\"response\": \"user exists\"}");
-        }
-        else if (service.isUserExistByEmail(object.getEmail())) {
+
+        if (service.isUserExistByEmail(object.getEmail())) {
             return ResponseEntity.badRequest().body("{\"response\": \"email exists\"}");
         }
         else if (service.isUserExistByPhone(object.getPhone())) {
@@ -57,15 +55,18 @@ public class UserController extends GenericController<User, UserDto> {
     public ResponseEntity<?> auth(@RequestBody LoginDto loginDto) {
         Map<String, Object> response = new HashMap<>();
 
-        if(!service.checkPassword(loginDto)) {
+        if(!service.checkPassword(loginDto) || !service.isUserExistByLogin(loginDto.getLogin())) {
 
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized user!\nWrong Password");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("{\"response\": \"wrong login or password\"}");
         }
 
         UserDetails foundUser = customUserDetailsService.loadUserByUsername(loginDto.getLogin());
         String token = jwtTokenUtil.generateToken(foundUser);
+        Long userId = service.getUserIdByUsername(loginDto.getLogin());
+
         response.put("token", token);
         response.put("authorities", foundUser.getAuthorities());
+        response.put("userId", userId);
 
         return ResponseEntity.ok().body(response);
     }

@@ -12,6 +12,7 @@ public interface UserRepository extends GenericRepository<User> {
     List<User> findUserByPhone(String phone);
     User findUserByEmail(String email);
     boolean existsByEmail(String email);
+    boolean existsByLogin(String login);
     boolean existsByPhone(String phone);
     User findUserByLogin(String login);
 
