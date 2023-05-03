@@ -51,6 +51,7 @@ public class UserController extends GenericController<User, UserDto> {
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.create(mapper.toEntity(object))));
     }
 
+    @Operation(description = "Создать JWT токен", method = "Create")
     @PostMapping("/auth")
     public ResponseEntity<?> auth(@RequestBody LoginDto loginDto) {
         Map<String, Object> response = new HashMap<>();

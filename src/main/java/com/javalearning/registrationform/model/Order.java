@@ -21,19 +21,27 @@ public class Order extends GenericModel {
     @Column(name = "appointment_day")
     private LocalDate appointmentDay;
 
-    @Column(name = "appointment_period")
-    private Integer appointmentPeriod;
+    @Column(name = "room_id")
+    private Integer roomId;
+
+    @Column(name = "pc_id")
+    private Integer pcId;
+//
+//    @Column(name = "userId")
+//    private Long userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_ORDERING_USER"))
     private User user;
 
     @Builder
-    public Order(Long id, LocalDateTime appointmentFullDate, LocalDate appointmentDay, Integer appointmentPeriod, User user) {
+    public Order(Long id, LocalDateTime appointmentFullDate, LocalDate appointmentDay, Integer roomId, Integer pcId, User user) {
         super(id);
         this.appointmentFullDate = appointmentFullDate;
         this.appointmentDay = appointmentDay;
-        this.appointmentPeriod = appointmentPeriod;
+        this.roomId = roomId;
+        this.pcId = pcId;
         this.user = user;
+//        this.userId = user.getId();
     }
 }

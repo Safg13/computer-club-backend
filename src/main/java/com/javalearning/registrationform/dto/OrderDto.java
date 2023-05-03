@@ -13,7 +13,8 @@ public class OrderDto extends GenericDto{
 
     private LocalDateTime appointmentFullDate;
     private LocalDate appointmentDay;
-    private Integer appointmentPeriod;
+    private Integer roomId;
+    private Integer pcId;
     private UserDto user;
 
 }

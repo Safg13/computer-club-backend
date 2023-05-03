@@ -25,6 +25,7 @@ public class UserService extends GenericService<User> {
     public User create(User user) {
         user.setRole(roleService.getOne(3L));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setLogin(user.getEmail()); //приравниваем логин к емейлу
         return repository.save(user);
     }
 

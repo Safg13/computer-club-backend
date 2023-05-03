@@ -33,9 +33,10 @@ public class OrderService extends GenericService<Order> {
 
         Order order = Order.builder()
                 .id(0L)
-                .appointmentFullDate(orderDto.getAppointmentFullDate().withMinute(0).withSecond(0).withNano(0))
-                .appointmentDay(orderDto.getAppointmentFullDate().toLocalDate())
-                .appointmentPeriod(orderDto.getAppointmentPeriod())
+                .appointmentFullDate(orderDto.getAppointmentFullDate().plusHours(3).withMinute(0).withSecond(0).withNano(0))
+                .appointmentDay(orderDto.getAppointmentFullDate().plusHours(3).toLocalDate())
+                .roomId(orderDto.getRoomId())
+                .pcId(orderDto.getRoomId())
                 .user(user)
                 .build();
         return repository.save(order);
@@ -43,6 +44,14 @@ public class OrderService extends GenericService<Order> {
 
     public List<Order> findOrdersByDate(LocalDate date) {
         return repository.findAllByAppointmentDay(date);
+    }
+
+    public List<Order> findOrdersByDateAndRoomId(LocalDate date, Integer roomId) {
+        return repository.findAllByAppointmentDayAndRoomId(date, roomId);
+    }
+
+    public List<Order> findOrdersByEmail(Long userId) {
+        return repository.findAllByUserId(userId);
     }
 
 }

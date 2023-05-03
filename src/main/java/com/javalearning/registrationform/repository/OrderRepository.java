@@ -12,8 +12,9 @@ import java.util.List;
 public interface
 OrderRepository extends GenericRepository<Order> {
 
-    List<Order> findAllByUserId(String userId);
+    List<Order> findAllByUserId(Long userId);
     List<Order> findAllByAppointmentDay(LocalDate appointmentDate);
+    List<Order> findAllByAppointmentDayAndRoomId(LocalDate appointmentDate, Integer roomId);
 
     //Order findOrderByAppointmentDate(LocalDateTime appointmentDate);
 
