@@ -30,35 +30,20 @@ public class OrderController extends GenericController<Order, OrderDto> {
         this.mapper = mapper;
     }
 
-    @Operation(description = "Проверить существует ли запись на это время", method = "GetOne")
-    @GetMapping("/check")
-    public ResponseEntity<Object> checkAppointment(LocalDateTime appointmentDate) {
-        if (service.isAppointmentExistsByDate(appointmentDate.plusHours(3))) {
-            return ResponseEntity.status(HttpStatus.OK).body("На данное время есть запись");
-        }
-        return ResponseEntity.status(HttpStatus.OK).body("Данное время свободно");
-    }
-
     @Operation(description = "Создать заказ с проверкой отсутствия записи на это время", method = "Create")
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/add-order")
     public ResponseEntity<Object> addAppointment(@RequestBody OrderDto orderDto) {
-        if (service.isAppointmentExistsByDate(orderDto.getAppointmentFullDate().plusHours(3))) {
+        if (service.isAppointmentExists(orderDto.getAppointmentFullDate(), orderDto.getRoomId(), orderDto.getPcId())) {
             return ResponseEntity.badRequest().body("{\"response\": \"appointment exists\"}");
         }
         return ResponseEntity.status(HttpStatus.OK).body(mapper.toDto(service.addOrder(orderDto)));
     }
 
-    @Operation(description = "Получить список всех заказов на конкретный день", method = "GetAll")
-    @GetMapping("/orderslistbydate/{date}")
-    public ResponseEntity<List<OrderDto>> getOrdersByDate(@PathVariable LocalDate date) {
-        return ResponseEntity.ok().body(service.findOrdersByDate(date).stream().map(mapper::toDto).toList());
-    }
-
-    @Operation(description = "Получить список всех заказов на конкретный день и комнату", method = "GetAll")
-    @GetMapping("/orderslistbydate/{date}/{roomId}")
-    public ResponseEntity<List<OrderDto>> getOrdersByDateAndRoom(@PathVariable LocalDate date, @PathVariable Integer roomId) {
-        return ResponseEntity.ok().body(service.findOrdersByDateAndRoomId(date, roomId).stream().map(mapper::toDto).toList());
+    @Operation(description = "Получить список всех заказов на конкретный день, комнату и время", method = "GetAll")
+    @GetMapping("/orderslistbydate/{date}/{roomId}/{appointmentFullDate}")
+    public ResponseEntity<List<OrderDto>> getOrdersByDateAndRoom(@PathVariable LocalDate date, @PathVariable Integer roomId, @PathVariable LocalDateTime appointmentFullDate) {
+        return ResponseEntity.ok().body(service.findOrdersByDateAndRoomIdAndTime(date, roomId, appointmentFullDate).stream().map(mapper::toDto).toList());
     }
 
     @Operation(description = "Получить список всех заказов пользователя", method = "GetAll")

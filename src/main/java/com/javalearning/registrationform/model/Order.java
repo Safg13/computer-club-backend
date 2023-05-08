@@ -26,9 +26,6 @@ public class Order extends GenericModel {
 
     @Column(name = "pc_id")
     private Integer pcId;
-//
-//    @Column(name = "userId")
-//    private Long userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "FK_ORDERING_USER"))
@@ -42,6 +39,5 @@ public class Order extends GenericModel {
         this.roomId = roomId;
         this.pcId = pcId;
         this.user = user;
-//        this.userId = user.getId();
     }
 }

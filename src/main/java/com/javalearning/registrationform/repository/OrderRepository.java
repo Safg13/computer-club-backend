@@ -14,10 +14,10 @@ OrderRepository extends GenericRepository<Order> {
 
     List<Order> findAllByUserId(Long userId);
     List<Order> findAllByAppointmentDay(LocalDate appointmentDate);
-    List<Order> findAllByAppointmentDayAndRoomId(LocalDate appointmentDate, Integer roomId);
+    List<Order> findAllByAppointmentDayAndRoomIdAndAppointmentFullDate(LocalDate appointmentDate, Integer roomId, LocalDateTime appointmentFullDate);
 
     //Order findOrderByAppointmentDate(LocalDateTime appointmentDate);
 
-    boolean existsByAppointmentFullDate(LocalDateTime appointmentFullDate);
+    boolean existsByAppointmentFullDateAndRoomIdAndPcId(LocalDateTime appointmentFullDate, Integer roomId, Integer pcId);
 
 }

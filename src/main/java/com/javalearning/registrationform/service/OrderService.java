@@ -23,9 +23,10 @@ public class OrderService extends GenericService<Order> {
         this.repository = repository;
     }
 
-    public boolean isAppointmentExistsByDate(LocalDateTime appointmentDate) {
+    public boolean isAppointmentExists(LocalDateTime appointmentDate, Integer roomId, Integer pcId) {
         LocalDateTime trimmedDate = appointmentDate.withMinute(0).withSecond(0).withNano(0);
-        return repository.existsByAppointmentFullDate(trimmedDate);
+
+        return repository.existsByAppointmentFullDateAndRoomIdAndPcId(trimmedDate, roomId, pcId);
     }
 
     public Order addOrder(OrderDto orderDto) {
@@ -33,10 +34,10 @@ public class OrderService extends GenericService<Order> {
 
         Order order = Order.builder()
                 .id(0L)
-                .appointmentFullDate(orderDto.getAppointmentFullDate().plusHours(3).withMinute(0).withSecond(0).withNano(0))
-                .appointmentDay(orderDto.getAppointmentFullDate().plusHours(3).toLocalDate())
+                .appointmentFullDate(orderDto.getAppointmentFullDate().withMinute(0).withSecond(0).withNano(0))
+                .appointmentDay(orderDto.getAppointmentFullDate().toLocalDate())
                 .roomId(orderDto.getRoomId())
-                .pcId(orderDto.getRoomId())
+                .pcId(orderDto.getPcId())
                 .user(user)
                 .build();
         return repository.save(order);
@@ -46,12 +47,11 @@ public class OrderService extends GenericService<Order> {
         return repository.findAllByAppointmentDay(date);
     }
 
-    public List<Order> findOrdersByDateAndRoomId(LocalDate date, Integer roomId) {
-        return repository.findAllByAppointmentDayAndRoomId(date, roomId);
+    public List<Order> findOrdersByDateAndRoomIdAndTime(LocalDate date, Integer roomId, LocalDateTime appointmentFullDate) {
+        return repository.findAllByAppointmentDayAndRoomIdAndAppointmentFullDate(date, roomId, appointmentFullDate);
     }
 
     public List<Order> findOrdersByEmail(Long userId) {
         return repository.findAllByUserId(userId);
     }
-
 }

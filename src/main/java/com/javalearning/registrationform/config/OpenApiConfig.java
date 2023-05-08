@@ -20,7 +20,7 @@ public class OpenApiConfig {
     public OpenAPI registrationFormProject() {
         return new OpenAPI()
                 .info(new Info()
-                .title("Форма регистрации")
+                .title("Сайт компьютерного клуба")
                 .contact(new Contact().name("Evgeny M.")));
     }
 }
